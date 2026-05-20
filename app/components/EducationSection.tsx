@@ -11,15 +11,16 @@ export default function EducationSection() {
           <div className="mx-auto flex items-center justify-center gap-3 rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.08)]">
             <GraduationCap className="h-5 w-5 text-cyan-300" />
             <span className="text-xs uppercase tracking-[0.35em] text-cyan-400 font-semibold">
-              Logs de Formación
+              Education Logs
             </span>
           </div>
           <div>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Educación
+              Education
             </h2>
             <p className="mt-2 text-slate-400 max-w-2xl mx-auto text-sm">
-              Credenciales académicas presentadas como bloques de soporte antes del cierre del portafolio.
+              Academic credentials supporting your professional development and
+              expertise.
             </p>
           </div>
         </div>
@@ -42,9 +43,7 @@ export default function EducationSection() {
                   <p className="mt-1 text-slate-400 text-sm">
                     {degree.institution}
                   </p>
-                  <p className="text-slate-500 text-xs mt-1">
-                    {degree.period}
-                  </p>
+                  <p className="text-slate-500 text-xs mt-1">{degree.period}</p>
                 </div>
               </div>
               <p className="mt-4 text-slate-300 text-sm leading-relaxed tracking-tight">

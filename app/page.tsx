@@ -103,22 +103,20 @@ export default function Home() {
               </div>
               <div className="flex gap-6">
                 <a
-                  href="#"
+                  href="https://github.com/AbrahamSanchezDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-400 hover:text-cyan-400 transition-colors"
                 >
                   GitHub
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/abraham-sanchez-f/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-400 hover:text-cyan-400 transition-colors"
                 >
                   LinkedIn
-                </a>
-                <a
-                  href="#"
-                  className="text-slate-400 hover:text-cyan-400 transition-colors"
-                >
-                  Twitter
                 </a>
               </div>
             </div>

@@ -6,12 +6,12 @@
     "period": "Nov 2025 - Feb 2026",
     "type": "Remote",
     "stackSummary": "Unity / C# / XR",
-    "coreAchievement": "Diseñé frameworks SOLID en Unity y desarrollé sistemas XR modulares preparados para VR.",
+    "coreAchievement": "Designed SOLID frameworks in Unity and developed modular XR systems prepared for VR.",
     "highlights": [
-      "Diseñé frameworks Unity reutilizables aplicando SOLID y ScriptableObjects.",
-      "Convertí apps clásicas a arquitecturas XR/VR con pipelines modulares.",
-      "Definí estándares de desarrollo y documentación para onboarding y mantenimiento.",
-      "Optimicé sistemas centrales para estabilidad y rendimiento en entornos VR."
+      "Designed reusable Unity frameworks applying SOLID principles and ScriptableObjects.",
+      "Converted classic apps to XR/VR architectures with modular pipelines.",
+      "Defined development and documentation standards for onboarding and maintenance.",
+      "Optimized core systems for stability and performance in VR environments."
     ]
   },
   {
@@ -21,12 +21,12 @@
     "period": "Jun 2024 - Aug 2025",
     "type": "Remote",
     "stackSummary": "Unity / LiveOps / Mobile",
-    "coreAchievement": "Desarrollé características gameplay y herramientas internas para títulos móviles F2P.",
+    "coreAchievement": "Developed gameplay features and internal tools for F2P mobile titles.",
     "highlights": [
-      "Construí herramientas Unity para equipos de arte, QA y LiveOps.",
-      "Integré analytics y sistemas UI basados en datos para mobile.",
-      "Mejoré la estabilidad runtime con Unity Profiler y BugSnag.",
-      "Optimizé workflows de asset bundling para builds de iOS y Android."
+      "Built Unity tools for art, QA, and LiveOps teams.",
+      "Integrated analytics and data-driven UI systems for mobile.",
+      "Improved runtime stability with Unity Profiler and BugSnag.",
+      "Optimized asset bundling workflows for iOS and Android builds."
     ]
   },
   {
@@ -36,12 +36,12 @@
     "period": "Jan 2024 - May 2024",
     "type": "Remote",
     "stackSummary": "Unity / Mobile / F2P",
-    "coreAchievement": "Desarrollé gameplay y sistemas de monetización para títulos casino móviles.",
+    "coreAchievement": "Developed gameplay and monetization systems for mobile casino titles.",
     "highlights": [
-      "Implementé funciones de recompensa y sistemas de mensajería in-game.",
-      "Depuré defectos de producción mediante debugging y playtesting.",
-      "Integré gameplay dentro de sistemas monetizados de casino móvil.",
-      "Aseguré entregas con enfoque en calidad y experiencia de usuario."
+      "Implemented reward functions and in-game messaging systems.",
+      "Debugged production defects through testing and playtesting.",
+      "Integrated gameplay within monetized mobile casino systems.",
+      "Ensured deliverables with focus on quality and user experience."
     ]
   },
   {
@@ -51,12 +51,12 @@
     "period": "Oct 2022 - Dec 2023",
     "type": "Remote",
     "stackSummary": "Unity / AR/VR / WebGL",
-    "coreAchievement": "Lideré proyectos AR/VR y WebGL con integración de backend y entrega comercial.",
+    "coreAchievement": "Led AR/VR and WebGL projects with backend integration and commercial delivery.",
     "highlights": [
-      "Guié equipos Unity en proyectos AR/VR con arquitecturas escalables.",
-      "Diseñé sistemas gameplay para WebGL y experiencias multiplataforma.",
-      "Integré aplicaciones Unity con APIs backend para datos en vivo.",
-      "Contribuí a lanzamientos comerciales presentados en eventos de la industria."
+      "Guided Unity teams on AR/VR projects with scalable architectures.",
+      "Designed gameplay systems for WebGL and cross-platform experiences.",
+      "Integrated Unity applications with backend APIs for live data.",
+      "Contributed to commercial launches presented at industry events."
     ]
   },
   {
@@ -66,12 +66,12 @@
     "period": "Jul 2020 - Sep 2022",
     "type": "Remote",
     "stackSummary": "AR / WebGL / Interactive",
-    "coreAchievement": "Desarrollé aplicaciones AR y WebGL centradas en simulaciones interactivas y asistentes virtuales.",
+    "coreAchievement": "Developed AR and WebGL applications focused on interactive simulations and virtual assistants.",
     "highlights": [
-      "Creé experiencias AR y WebGL para proyectos orientados al cliente.",
-      "Construí simulaciones inmersivas y entrenamientos interactivos.",
-      "Entregué un asistente virtual WebGL para instalaciones holográficas.",
-      "Mantuve pipelines cross-platform para producción continua."
+      "Created AR and WebGL experiences for client-oriented projects.",
+      "Built immersive simulations and interactive training systems.",
+      "Delivered a WebGL virtual assistant for holographic installations.",
+      "Maintained cross-platform pipelines for continuous production."
     ]
   },
   {
@@ -81,12 +81,12 @@
     "period": "Feb 2013 - Jan 2015",
     "type": "Remote",
     "stackSummary": "Unity / 3D / Procedural",
-    "coreAchievement": "Produje assets 3D y soporte Unity para un lanzamiento PC en Steam con generación procedimental.",
+    "coreAchievement": "Produced 3D assets and Unity support for a Steam PC release with procedural generation.",
     "highlights": [
-      "Creé assets 3D y NPCs para un título Steam premium.",
-      "Asistí en setup de escenas y integración de niveles en Unity.",
-      "Desarrollé scripts de generación procedural para NPCs.",
-      "Realicé QA técnico y debugging para asegurar estabilidad."
+      "Created 3D assets and NPCs for a premium Steam title.",
+      "Assisted in scene setup and level integration in Unity.",
+      "Developed procedural generation scripts for NPCs.",
+      "Performed technical QA and debugging to ensure stability."
     ]
   },
   {
@@ -95,13 +95,13 @@
     "company": "The Capture Worlds",
     "period": "Mar 2018 - Mar 2020",
     "type": "Remote",
-    "stackSummary": "Steam / Procedural / IA",
-    "coreAchievement": "Diseñé y lancé un juego procedimental de PC en Steam con IA por behavior trees.",
+    "stackSummary": "Steam / Procedural / AI",
+    "coreAchievement": "Designed and launched a procedural PC game on Steam with behavior tree AI.",
     "highlights": [
-      "Desarrollé un juego procedural completo desde concepto hasta Steam.",
-      "Implementé sistemas de generación procedural para quests y contenido de mundo.",
-      "Construí IA de comportamiento con behavior trees.",
-      "Optimicé runtime con object pooling y gestión de memoria."
+      "Developed a complete procedural game from concept to Steam launch.",
+      "Implemented procedural generation systems for quests and world content.",
+      "Built behavior-based AI with behavior trees.",
+      "Optimized runtime with object pooling and memory management."
     ]
   },
   {
@@ -111,12 +111,12 @@
     "period": "Jan 2017 - Feb 2018",
     "type": "Remote",
     "stackSummary": "Steam / AI / Procedural",
-    "coreAchievement": "Lideré programación gameplay para un juego Steam con IA y contenido procedural.",
+    "coreAchievement": "Led gameplay programming for a Steam game with AI and procedural content.",
     "highlights": [
-      "Creé sistemas de IA basados en behavior trees para mecánicas adaptativas.",
-      "Desarrollé contenido procedural abierto para un juego PC independiente.",
-      "Optimizé rendimiento de gameplay para lanzamiento estable en Steam.",
-      "Aseguré calidad de build y estabilidad pre-lanzamiento."
+      "Created behavior tree-based AI systems for adaptive mechanics.",
+      "Developed open procedural content for an independent PC game.",
+      "Optimized gameplay performance for stable Steam launch.",
+      "Ensured build quality and pre-launch stability."
     ]
   }
 ]
