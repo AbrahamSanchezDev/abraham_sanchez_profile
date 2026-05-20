@@ -1,0 +1,122 @@
+[
+  {
+    "id": "alter-learning",
+    "role": "Senior Unity Developer (Contract)",
+    "company": "Alter Learning",
+    "period": "Nov 2025 - Feb 2026",
+    "type": "Remote",
+    "stackSummary": "Unity / C# / XR",
+    "coreAchievement": "Diseñé frameworks SOLID en Unity y desarrollé sistemas XR modulares preparados para VR.",
+    "highlights": [
+      "Diseñé frameworks Unity reutilizables aplicando SOLID y ScriptableObjects.",
+      "Convertí apps clásicas a arquitecturas XR/VR con pipelines modulares.",
+      "Definí estándares de desarrollo y documentación para onboarding y mantenimiento.",
+      "Optimicé sistemas centrales para estabilidad y rendimiento en entornos VR."
+    ]
+  },
+  {
+    "id": "scopely",
+    "role": "Senior Unity Developer",
+    "company": "Scopely",
+    "period": "Jun 2024 - Aug 2025",
+    "type": "Remote",
+    "stackSummary": "Unity / LiveOps / Mobile",
+    "coreAchievement": "Desarrollé características gameplay y herramientas internas para títulos móviles F2P.",
+    "highlights": [
+      "Construí herramientas Unity para equipos de arte, QA y LiveOps.",
+      "Integré analytics y sistemas UI basados en datos para mobile.",
+      "Mejoré la estabilidad runtime con Unity Profiler y BugSnag.",
+      "Optimizé workflows de asset bundling para builds de iOS y Android."
+    ]
+  },
+  {
+    "id": "amber-studio",
+    "role": "Senior Unity Developer (Contract)",
+    "company": "Amber Studio",
+    "period": "Jan 2024 - May 2024",
+    "type": "Remote",
+    "stackSummary": "Unity / Mobile / F2P",
+    "coreAchievement": "Desarrollé gameplay y sistemas de monetización para títulos casino móviles.",
+    "highlights": [
+      "Implementé funciones de recompensa y sistemas de mensajería in-game.",
+      "Depuré defectos de producción mediante debugging y playtesting.",
+      "Integré gameplay dentro de sistemas monetizados de casino móvil.",
+      "Aseguré entregas con enfoque en calidad y experiencia de usuario."
+    ]
+  },
+  {
+    "id": "peakactivity",
+    "role": "Senior Unity Developer – Unity Team Lead",
+    "company": "PeakActivity",
+    "period": "Oct 2022 - Dec 2023",
+    "type": "Remote",
+    "stackSummary": "Unity / AR/VR / WebGL",
+    "coreAchievement": "Lideré proyectos AR/VR y WebGL con integración de backend y entrega comercial.",
+    "highlights": [
+      "Guié equipos Unity en proyectos AR/VR con arquitecturas escalables.",
+      "Diseñé sistemas gameplay para WebGL y experiencias multiplataforma.",
+      "Integré aplicaciones Unity con APIs backend para datos en vivo.",
+      "Contribuí a lanzamientos comerciales presentados en eventos de la industria."
+    ]
+  },
+  {
+    "id": "siono",
+    "role": "Unity Developer",
+    "company": "Siono",
+    "period": "Jul 2020 - Sep 2022",
+    "type": "Remote",
+    "stackSummary": "AR / WebGL / Interactive",
+    "coreAchievement": "Desarrollé aplicaciones AR y WebGL centradas en simulaciones interactivas y asistentes virtuales.",
+    "highlights": [
+      "Creé experiencias AR y WebGL para proyectos orientados al cliente.",
+      "Construí simulaciones inmersivas y entrenamientos interactivos.",
+      "Entregué un asistente virtual WebGL para instalaciones holográficas.",
+      "Mantuve pipelines cross-platform para producción continua."
+    ]
+  },
+  {
+    "id": "stoneworks-games",
+    "role": "3D Artist & Junior Unity Developer",
+    "company": "Stoneworks Games",
+    "period": "Feb 2013 - Jan 2015",
+    "type": "Remote",
+    "stackSummary": "Unity / 3D / Procedural",
+    "coreAchievement": "Produje assets 3D y soporte Unity para un lanzamiento PC en Steam con generación procedimental.",
+    "highlights": [
+      "Creé assets 3D y NPCs para un título Steam premium.",
+      "Asistí en setup de escenas y integración de niveles en Unity.",
+      "Desarrollé scripts de generación procedural para NPCs.",
+      "Realicé QA técnico y debugging para asegurar estabilidad."
+    ]
+  },
+  {
+    "id": "the-capture-worlds",
+    "role": "Solo Developer -- Commercial Steam Release",
+    "company": "The Capture Worlds",
+    "period": "Mar 2018 - Mar 2020",
+    "type": "Remote",
+    "stackSummary": "Steam / Procedural / IA",
+    "coreAchievement": "Diseñé y lancé un juego procedimental de PC en Steam con IA por behavior trees.",
+    "highlights": [
+      "Desarrollé un juego procedural completo desde concepto hasta Steam.",
+      "Implementé sistemas de generación procedural para quests y contenido de mundo.",
+      "Construí IA de comportamiento con behavior trees.",
+      "Optimicé runtime con object pooling y gestión de memoria."
+    ]
+  },
+  {
+    "id": "code-bullet",
+    "role": "Unity Developer (Freelance)",
+    "company": "Code Bullet",
+    "period": "Jan 2017 - Feb 2018",
+    "type": "Remote",
+    "stackSummary": "Steam / AI / Procedural",
+    "coreAchievement": "Lideré programación gameplay para un juego Steam con IA y contenido procedural.",
+    "highlights": [
+      "Creé sistemas de IA basados en behavior trees para mecánicas adaptativas.",
+      "Desarrollé contenido procedural abierto para un juego PC independiente.",
+      "Optimizé rendimiento de gameplay para lanzamiento estable en Steam.",
+      "Aseguré calidad de build y estabilidad pre-lanzamiento."
+    ]
+  }
+]

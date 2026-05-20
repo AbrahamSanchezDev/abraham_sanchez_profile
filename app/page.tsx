@@ -1,4 +1,5 @@
 import ArcadeSection from "./components/ArcadeSection";
+import ExperienceSection from "./components/ExperienceSection";
 
 export default function Home() {
   const navItems = [
@@ -65,6 +66,9 @@ export default function Home() {
         <section id="projects" className="w-full">
           <ArcadeSection />
         </section>
+
+        {/* Experience Section */}
+        <ExperienceSection />
 
         {/* Footer */}
         <footer className="w-full bg-slate-950 border-t border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
