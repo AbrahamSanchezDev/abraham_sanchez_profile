@@ -1,0 +1,16 @@
+[
+  {
+    "id": "engineering",
+    "degree": "Ingeniería en Desarrollo y Gestión de Software",
+    "institution": "Universidad Tecnológica de Salamanca",
+    "period": "Jun 2022 - Apr 2026",
+    "details": "Especialización en ingeniería de software, gestión de proyectos de desarrollo, patrones de diseño avanzados y arquitectura de software multiplataforma."
+  },
+  {
+    "id": "associate",
+    "degree": "T.S.U. en Tecnologías de la Información - Área Desarrollo de Software Multiplataforma",
+    "institution": "Universidad Tecnológica de Salamanca",
+    "period": "2022 - 2024",
+    "details": "Fundamentos de programación estructurada y orientada a objetos, bases de datos y desarrollo de aplicaciones móviles y web."
+  }
+]

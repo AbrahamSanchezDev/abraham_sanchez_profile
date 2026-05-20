@@ -1,11 +1,15 @@
 import ArcadeSection from "./components/ArcadeSection";
+import EducationSection from "./components/EducationSection";
 import ExperienceSection from "./components/ExperienceSection";
+import SkillsSection from "./components/SkillsSection";
 
 export default function Home() {
   const navItems = [
     { label: "Inicio", href: "#" },
     { label: "Proyectos", href: "#projects" },
     { label: "Experiencia", href: "#experience" },
+    { label: "Habilidades", href: "#skills" },
+    { label: "Educación", href: "#education" },
     { label: "Contacto", href: "#contact" },
   ];
 
@@ -40,10 +44,15 @@ export default function Home() {
         <section className="w-full bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900/50 py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight">
-              Arcade <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">Gaming</span> Portfolio
+              Arcade{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+                Gaming
+              </span>{" "}
+              Portfolio
             </h1>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-8">
-              Minimalist games built with optimized architecture, clean patterns, and performance-first design.
+              Minimalist games built with optimized architecture, clean
+              patterns, and performance-first design.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -70,18 +79,47 @@ export default function Home() {
         {/* Experience Section */}
         <ExperienceSection />
 
+        {/* Skills Section */}
+        <section id="skills" className="w-full">
+          <SkillsSection />
+        </section>
+
+        {/* Education Section */}
+        <section id="education" className="w-full">
+          <EducationSection />
+        </section>
+
         {/* Footer */}
         <footer className="w-full bg-slate-950 border-t border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
               <div>
-                <h3 className="text-white font-bold text-lg mb-2">Abraham Sánchez</h3>
-                <p className="text-slate-400">Game Developer & Creative Technologist</p>
+                <h3 className="text-white font-bold text-lg mb-2">
+                  Abraham Sánchez
+                </h3>
+                <p className="text-slate-400">
+                  Game Developer & Creative Technologist
+                </p>
               </div>
               <div className="flex gap-6">
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">GitHub</a>
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">LinkedIn</a>
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">Twitter</a>
+                <a
+                  href="#"
+                  className="text-slate-400 hover:text-cyan-400 transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="#"
+                  className="text-slate-400 hover:text-cyan-400 transition-colors"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="#"
+                  className="text-slate-400 hover:text-cyan-400 transition-colors"
+                >
+                  Twitter
+                </a>
               </div>
             </div>
             <div className="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
