@@ -102,9 +102,7 @@ export default function ArcadeSection() {
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveGameUrl(
-                              game.id === "drift-shooter"
-                                ? "TU_URL_DE_PRUEBA_AQUÍ"
-                                : "/games/" + game.id,
+                              game.demoUrl ? game.demoUrl : `/games/${game.id}`,
                             );
                             setIsModalOpen(true);
                           }}

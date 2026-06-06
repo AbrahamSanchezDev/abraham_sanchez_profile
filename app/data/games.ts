@@ -5,6 +5,7 @@ export interface GameProject {
   techBadge: string;
   gifUrl: string;
   repoUrl: string;
+  demoUrl?: string;
   challenge: string;
   architecture: string;
   techStack: string[];
