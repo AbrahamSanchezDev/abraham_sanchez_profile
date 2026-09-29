@@ -8,6 +8,8 @@ export type Profile = typeof en;
 export type Lang = "en" | "es";
 export type UI = Profile["ui"];
 export const LANGS: Lang[] = ["en", "es"];
+/** GitHub Pages sub-path (e.g. "/repo"); empty in dev. Plain <img>/<a> tags need it prepended by hand. */
+export const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 // Typed as Profile so a missing/renamed key in the Spanish file fails the build.
 const PROFILES: Record<Lang, Profile> = { en, es };
 export const isLang = (l: string): l is Lang => l in PROFILES;
@@ -118,10 +120,10 @@ export function loadProjects(lang: Lang): Project[] {
       const mediaDir = path.join(PUBLIC_DIR, "projects", slug);
       const files = fs.existsSync(mediaDir) ? fs.readdirSync(mediaDir).sort() : [];
       const main = files.filter((f) => !f.includes("-poster"));
-      const media = main.map((f) => `/projects/${slug}/${f}`);
+      const media = main.map((f) => `${BASE}/projects/${slug}/${f}`);
       // Cover = first media item; if it's animated use its still poster so the grid never downloads big files.
       const posterOfFirst = main[0]?.replace(".webp", "-poster.webp");
-      const cover = !main[0] ? null : `/projects/${slug}/${files.includes(posterOfFirst) ? posterOfFirst : main[0]}`;
+      const cover = !main[0] ? null : `${BASE}/projects/${slug}/${files.includes(posterOfFirst) ? posterOfFirst : main[0]}`;
       return { order: 99, tags: [], ...raw, slug, tech: (techStack as string[]).map(tech), cover, media } as Project;
     })
     .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));

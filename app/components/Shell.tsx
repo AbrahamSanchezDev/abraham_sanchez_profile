@@ -111,12 +111,12 @@ export default function Shell(p: Props) {
   const themeBtn = (
     <>
       <a
-        href={`/${other}`}
+        href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/${other}`}
         hrefLang={other}
         // Keep the reader on the same section (and skip the intro) when switching language.
         onClick={(e) => {
           e.preventDefault();
-          location.href = `/${other}${location.hash || "#" + active}`;
+          location.href = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/${other}${location.hash || "#" + active}`;
         }}
         title={p.ui.switchTitle}
         aria-label={p.ui.switchTitle}

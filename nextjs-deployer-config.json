@@ -1,0 +1,7 @@
+{
+  "repo_url": "https://github.com/AbrahamSanchezDev/abraham_sanchez_profile",
+  "base_path": "/abraham_sanchez_profile",
+  "target_branch": "gh-pages",
+  "commit_message": "Deploy Next.js build to GitHub Pages",
+  "custom_domain": ""
+}
