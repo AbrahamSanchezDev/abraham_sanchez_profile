@@ -109,6 +109,8 @@ const readJson = (file: string) => (fs.existsSync(file) ? JSON.parse(fs.readFile
  * An optional project.<lang>.json overrides text fields for that language.
  */
 export function loadProjects(lang: Lang): Project[] {
+  // Card order lives in projects_info/order.json (list of slugs); unlisted projects go last.
+  const order: string[] = readJson(path.join(PROJECTS_DIR, "order.json"));
   return fs
     .readdirSync(PROJECTS_DIR)
     .filter((slug) => fs.existsSync(path.join(PROJECTS_DIR, slug, "project.json")))
@@ -124,7 +126,8 @@ export function loadProjects(lang: Lang): Project[] {
       // Cover = first media item; if it's animated use its still poster so the grid never downloads big files.
       const posterOfFirst = main[0]?.replace(".webp", "-poster.webp");
       const cover = !main[0] ? null : `${BASE}/projects/${slug}/${files.includes(posterOfFirst) ? posterOfFirst : main[0]}`;
-      return { order: 99, tags: [], ...raw, slug, tech: (techStack as string[]).map(tech), cover, media } as Project;
+      const rank = order.indexOf(slug);
+      return { order: rank < 0 ? 99 : rank, tags: [], ...raw, slug, tech: (techStack as string[]).map(tech), cover, media } as Project;
     })
     .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 }

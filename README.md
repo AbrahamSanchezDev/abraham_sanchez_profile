@@ -22,7 +22,8 @@ The site lives at `/en` and `/es`. `/` redirects based on the browser language (
 
 ### Adding a project
 
-1. Create `projects_info/<project-slug>/project.json` (kebab-case folder name = project id). Fields: `order`, `tags` (`Unity` / `Web` / `XR` — drive the filter chips), `title`, `subtitle`, `techBadge`, `repoUrl`, `demoUrl` (optional → "Try demo" pop-up), `demoEmbeddable: false` (for links that can't load in an iframe, e.g. npm), `challenge`, `architecture`, `techStack`, `codeSnippetTitle`, `codeSnippet`.
+1. Create `projects_info/<project-slug>/project.json` (kebab-case folder name = project id). Fields: `tags` (`Unity` / `Web` / `XR` — drive the filter chips), `title`, `subtitle`, `techBadge`, `repoUrl`, `demoUrl` (optional → "Try demo" pop-up), `demoEmbeddable: false` (for links that can't load in an iframe, e.g. npm), `challenge`, `architecture`, `techStack`, `codeSnippetTitle`, `codeSnippet`.
+   Add the slug to `projects_info/order.json` where the card should appear (the list order is the display order; unlisted projects go last).
 2. Add media as `preview-01.gif`, `preview-02.png`, … (sorted by name; the first is the card cover).
 3. Optional: add `project.es.json` with the Spanish `title`, `subtitle`, `challenge`, `architecture`, `codeSnippetTitle` (any field left out falls back to English).
 4. Run `npm run media` — converts media to optimized WebP in `public/projects/<slug>/` (GIFs → animated WebP + still poster). Raw media in `projects_info/` is git-ignored; commit the `public/projects` output.

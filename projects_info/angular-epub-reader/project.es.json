@@ -1,0 +1,6 @@
+{
+  "subtitle": "Lector de EPUB en Angular con navegación por capítulos y lectura en voz alta.",
+  "challenge": "Construí un lector de EPUB en el navegador que procesa el contenido del archivo comprimido, renderiza capítulos e imágenes e integra síntesis de voz para la lectura en voz alta.",
+  "architecture": "Aplicación Angular orientada a eventos con servicios para el procesamiento de EPUB, signals para el estado de la interfaz y síntesis de voz nativa del navegador.",
+  "codeSnippetTitle": "Flujo de carga y procesamiento de EPUB"
+}
