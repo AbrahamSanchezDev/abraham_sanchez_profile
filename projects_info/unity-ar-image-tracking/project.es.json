@@ -1,0 +1,7 @@
+{
+  "title": "POC de Image Tracking en AR",
+  "subtitle": "Prototipo AR en Unity para rastreo de QR/imágenes con colocación de prefabs en tiempo de ejecución",
+  "challenge": "Construí una prueba de concepto de image tracking en AR con Unity que detecta imágenes de referencia y genera prefabs rastreados en tiempo de ejecución en móvil, manteniendo la app portable a Android e iOS.",
+  "architecture": "Rastreo AR orientado a eventos con pooling de prefabs y UI en espacio de mundo orientada hacia la cámara para los objetivos rastreados.",
+  "codeSnippetTitle": "Aparición y actualización de imágenes rastreadas"
+}

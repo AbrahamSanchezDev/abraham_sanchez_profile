@@ -1,0 +1,7 @@
+{
+  "title": "Framework de Cartas Multimodo",
+  "subtitle": "Framework modular de cartas en Unity para Blackjack, Solitario y Texas Hold'em, con entrega en WebGL y Meta Quest 3.",
+  "challenge": "Diseñar un solo código base en Unity que soporte WebGL, escritorio y XR manteniendo la lógica de juego en C# puro y lo suficientemente determinista para pruebas automatizadas. El proyecto separa las capas Core, Presentation, Cloud e Input/XR, y usa inyección de dependencias y adaptadores de plataforma para que un mismo motor de reglas funcione en distintos dispositivos sin acoplarse a los objetos de escena de Unity.",
+  "architecture": "Arquitectura en capas con un modelo de dominio Core puro, controladores orientados a eventos y adaptadores explícitos para sistemas de cada plataforma. Aplica inyección de dependencias, motores de juego modulares, presentación con UI Toolkit y servicios con PlayFab para que la capa de reglas sea reutilizable y la de presentación intercambiable.",
+  "codeSnippetTitle": "Flujo del controlador de Blackjack"
+}

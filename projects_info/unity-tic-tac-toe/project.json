@@ -1,0 +1,23 @@
+{
+  "order": 13,
+  "tags": [
+    "Unity",
+    "Web"
+  ],
+  "title": "Gato",
+  "subtitle": "Unity Tic-Tac-Toe with responsive UI and win animations",
+  "techBadge": "Unity 2D",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/Gato",
+  "demoUrl": "https://abrahamsanchezdev.github.io/Gato/",
+  "challenge": "Implemented responsive turn-based logic, win detection, and animated UI feedback in Unity while keeping game state clean and restartable.",
+  "architecture": "Event-driven MonoBehaviour flow with UI button listeners and coroutine-based animation.",
+  "techStack": [
+    "Unity",
+    "C#",
+    "Universal Render Pipeline",
+    "TextMeshPro",
+    "AudioSource"
+  ],
+  "codeSnippetTitle": "Turn handling and win detection",
+  "codeSnippet": "public void OnButtonClick(int index)\n{\n    if (!gameActive) return;\n    buttons[index].GetComponentInChildren<TMP_Text>().text = currentPlayer;\n    buttons[index].interactable = false;\n    movesCount++;\n    CheckWinner();\n    if (gameActive)\n    {\n        currentPlayer = (currentPlayer == \"X\") ? \"O\" : \"X\";\n        UpdateStatusText();\n    }\n}"
+}

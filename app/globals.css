@@ -1,102 +1,136 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --neon-cyan: #00f2fe;
-  --neon-cyan-dark: #0097b2;
+/* Palette tokens. --accent / --accent-2 / --radius are overwritten at runtime by the theme panel. */
+:root,
+[data-mode="dark"] {
+  --bg: #0b1017;
+  --surface: #121a26;
+  --surface-2: #19243433;
+  --line: #22303f;
+  --text: #d3e0ec;
+  --muted: #7d91a3;
+  --heading: #eef6ff;
+  --accent: #00e5ff;
+  --accent-2: #7fff4f;
+  --radius: 10px;
+  color-scheme: dark;
+}
+
+[data-mode="light"] {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #e9eef4aa;
+  --line: #d8e0e8;
+  --text: #2a3643;
+  --muted: #5e6e7e;
+  --heading: #0c1520;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-mode="auto"] {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --surface-2: #e9eef4aa;
+    --line: #d8e0e8;
+    --text: #2a3643;
+    --muted: #5e6e7e;
+    --heading: #0c1520;
+    color-scheme: light;
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-heading: var(--heading);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --radius-theme: var(--radius);
+  --font-sans: var(--nf-body);
+  --font-display: var(--nf-display);
+  --font-mono: var(--nf-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-/* Neon Glow Effects - Arcade Aesthetic */
-@layer utilities {
-  @supports (filter: drop-shadow(0 0 1px)) {
-    .glow-cyan-sm {
-      box-shadow:
-        0 0 8px 0 rgba(0, 242, 254, 0.4),
-        0 0 16px 0 rgba(0, 242, 254, 0.2);
-    }
-
-    .glow-cyan {
-      box-shadow:
-        0 0 12px 0 rgba(0, 242, 254, 0.5),
-        0 0 24px 0 rgba(0, 242, 254, 0.3),
-        0 0 32px 0 rgba(0, 242, 254, 0.15);
-    }
-
-    .glow-cyan-lg {
-      box-shadow:
-        0 0 20px 0 rgba(0, 242, 254, 0.6),
-        0 0 40px 0 rgba(0, 242, 254, 0.4),
-        0 0 60px 0 rgba(0, 242, 254, 0.2);
-    }
-
-    .glow-cyan-intense {
-      box-shadow:
-        0 0 20px 0 rgba(0, 242, 254, 0.8),
-        0 0 40px 0 rgba(0, 242, 254, 0.5),
-        0 0 80px 0 rgba(0, 242, 254, 0.3),
-        inset 0 0 20px rgba(0, 242, 254, 0.1);
-    }
-
-    /* Animated pulsing neon effect */
-    @keyframes neon-pulse {
-      0%,
-      100% {
-        box-shadow:
-          0 0 12px 0 rgba(0, 242, 254, 0.5),
-          0 0 24px 0 rgba(0, 242, 254, 0.3);
-      }
-      50% {
-        box-shadow:
-          0 0 20px 0 rgba(0, 242, 254, 0.7),
-          0 0 40px 0 rgba(0, 242, 254, 0.4);
-      }
-    }
-
-    .glow-cyan-pulse {
-      animation: neon-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      box-shadow:
-        0 0 12px 0 rgba(0, 242, 254, 0.5),
-        0 0 24px 0 rgba(0, 242, 254, 0.3);
-    }
-
-    /* Fast pulsing for interactive feedback */
-    @keyframes neon-pulse-fast {
-      0%,
-      100% {
-        box-shadow:
-          0 0 12px 0 rgba(0, 242, 254, 0.5),
-          0 0 24px 0 rgba(0, 242, 254, 0.3);
-      }
-      50% {
-        box-shadow:
-          0 0 16px 0 rgba(0, 242, 254, 0.6),
-          0 0 32px 0 rgba(0, 242, 254, 0.35);
-      }
-    }
-
-    .glow-cyan-pulse-fast {
-      animation: neon-pulse-fast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--nf-body), system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+/* Subtle HUD grid behind everything */
+.hud-bg {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--accent) 16%, transparent), transparent),
+    linear-gradient(color-mix(in oklab, var(--line) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--line) 45%, transparent) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+.glow {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 50%, transparent),
+    0 0 24px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+.text-glow {
+  text-shadow: 0 0 28px color-mix(in oklab, var(--accent) 55%, transparent);
+}
+
+/* Panel with accent bar, borrowed from the Iron Paw GDD */
+.panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.panel-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent);
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(4px);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.6s ease-out both; }
+
+[data-motion="off"] *,
+[data-motion="off"] *::before {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* Nav layout, driven by <html data-nav> so the saved choice applies before hydration */
+@media (min-width: 1024px) {
+  [data-nav="sidebar"] .nav-top { display: none; }
+  [data-nav="sidebar"] .content { padding-left: 16rem; }
+  [data-nav="top"] .nav-side { display: none; }
 }

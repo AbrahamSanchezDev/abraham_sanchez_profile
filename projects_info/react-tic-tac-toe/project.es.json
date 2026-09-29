@@ -1,0 +1,7 @@
+{
+  "title": "Gato con React",
+  "subtitle": "Gato interactivo en React con historial de movimientos y viaje en el tiempo",
+  "challenge": "Implementar la lógica que detecta al ganador en múltiples estados del tablero mientras se mantiene el historial de movimientos para poder viajar en el tiempo. El reto está en manejar transiciones de estado complejas y registrar la partida sin mutaciones.",
+  "architecture": "Arquitectura de componentes en React con el estado elevado al componente Game. Interacción del tablero basada en eventos con funciones puras (calculateWinner) para una lógica determinista. Actualizaciones inmutables con slicing de arreglos para el historial.",
+  "codeSnippetTitle": "Detección de ganador e historial de movimientos"
+}

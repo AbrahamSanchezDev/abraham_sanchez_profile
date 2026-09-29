@@ -1,0 +1,6 @@
+{
+  "subtitle": "Juego de puzzle en cuadrícula con bloques conectados y reacciones en cadena",
+  "challenge": "Implementar un sistema de puzzle en cuadrícula donde los bloques caen y se rellenan dinámicamente. El reto principal fue detectar eficientemente bloques conectados del mismo color con un algoritmo flood-fill y manejar el estado asíncrono durante la recolección, eliminación y reacciones en cadena.",
+  "architecture": "Patrón Singleton para GameManager y GridManager; interacciones orientadas a eventos con flood-fill para detectar componentes conectados; manejo de estado con corrutinas para los tiempos de animación y el rellenado de la cuadrícula.",
+  "codeSnippetTitle": "Detección de bloques conectados con flood-fill"
+}

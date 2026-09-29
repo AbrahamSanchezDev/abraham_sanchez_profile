@@ -1,0 +1,22 @@
+{
+  "order": 12,
+  "tags": [
+    "Web"
+  ],
+  "title": "Tic-Tac-Toe Game with React",
+  "subtitle": "Interactive React-based Tic-Tac-Toe with move history and time travel",
+  "techBadge": "React",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/tic-tac-toe_game_with_react",
+  "demoUrl": "https://abrahamsanchezdev.github.io/tic-tac-toe_game_with_react/",
+  "challenge": "Implement game logic that detects winners across multiple board states while maintaining move history for time travel functionality. The challenge involves managing complex state transitions and efficiently tracking game progression without mutations.",
+  "architecture": "Component-driven React architecture with state lifting to Game component. Event-driven board interaction pattern with pure function utilities (calculateWinner) for deterministic game logic. Immutable state updates using array slicing for history management.",
+  "techStack": [
+    "React 18",
+    "React Hooks (useState)",
+    "JavaScript ES6",
+    "Express (proxy)",
+    "Axios"
+  ],
+  "codeSnippetTitle": "Winner Detection and Move History",
+  "codeSnippet": "const [history, setHistory] = useState([Array(9).fill(null)]);\nconst [currentMove, setCurrentMove] = useState(0);\nconst currentSquares = history[currentMove];\n\nfunction handlePlay(nextSquares) {\n  const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];\n  setHistory(nextHistory);\n  setCurrentMove(nextHistory.length - 1);\n}\n\nfunction jumpTo(nextMove) {\n  setCurrentMove(nextMove);\n}"
+}

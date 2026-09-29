@@ -1,0 +1,6 @@
+{
+  "subtitle": "Gato en Unity con UI responsiva y animaciones de victoria",
+  "challenge": "Implementé lógica por turnos responsiva, detección de ganador y retroalimentación animada en la UI de Unity, manteniendo el estado del juego limpio y reiniciable.",
+  "architecture": "Flujo de MonoBehaviour orientado a eventos con listeners en los botones de UI y animaciones con corrutinas.",
+  "codeSnippetTitle": "Manejo de turnos y detección de ganador"
+}

@@ -1,0 +1,465 @@
+{
+  "site": {
+    "showIntro": true,
+    "defaultNav": "sidebar",
+    "defaultTheme": "neon"
+  },
+  "person": {
+    "name": "Abraham Sanchez",
+    "initials": "AS",
+    "headline": "Senior Software Engineer",
+    "subheadline": "Unity · XR · Full-Stack Web",
+    "tagline": "I build games, XR experiences and the tools behind them — from first prototype to live operations.",
+    "summary": "Senior engineer with 10+ years shipping commercial products across PC, mobile (iOS/Android), WebGL and XR. I've shipped two games on Steam, raised player retention on a high-traffic F2P mobile title, led an XR team whose iOS AR app was nominated for the Unity Awards, and automated pipelines that saved tens of thousands in production costs. I care about clean, modular architecture, measurable performance and code that the next developer can pick up fast.",
+    "location": "Salamanca, Gto, Mexico",
+    "timezone": "CST (UTC-6) · Remote-ready · Willing to relocate",
+    "availability": "Open to remote senior roles · Willing to relocate",
+    "email": "abrahamgto@gmail.com",
+    "links": {
+      "github": "https://github.com/AbrahamSanchezDev",
+      "linkedin": "https://www.linkedin.com/in/abraham-sanchez-f/",
+      "steam": "https://store.steampowered.com/app/826930/The_Capture_Worlds/"
+    },
+    "languages": [
+      "Spanish (Native)",
+      "English (Fluent, professional)"
+    ],
+    "cv": [
+      {
+        "label": "Software Engineer CV",
+        "file": "/cv/Abraham_Sanchez_Software_Engineer.pdf"
+      },
+      {
+        "label": "Unity Developer CV",
+        "file": "/cv/Abraham_Sanchez_Unity_Developer.pdf"
+      },
+      {
+        "label": "CV en Español",
+        "file": "/cv/Abraham_Sanchez_Ingeniero_de_Software.pdf"
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": "10+",
+      "label": "Years shipping software"
+    },
+    {
+      "value": "2",
+      "label": "Games shipped on Steam"
+    },
+    {
+      "value": "+5%",
+      "label": "Player retention — WWE Champions"
+    },
+    {
+      "value": "$50K+",
+      "label": "Saved via pipeline automation"
+    }
+  ],
+  "achievements": [
+    "iOS AR app nominated for the Unity Awards 2021",
+    "Magic Leap 2 experience showcased at AWE",
+    "5% crash-rate reduction on a live F2P mobile title",
+    "Procedural system scaled 40 assets into 4,800+"
+  ],
+  "sections": [
+    {
+      "id": "about",
+      "label": "About",
+      "icon": "User",
+      "blurb": "Who I am and what I bring to a team."
+    },
+    {
+      "id": "spotlight",
+      "label": "Spotlight",
+      "icon": "Gamepad2",
+      "blurb": "My own game, published on Steam."
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "icon": "Boxes",
+      "blurb": "Playable demos and source code."
+    },
+    {
+      "id": "experience",
+      "label": "Experience",
+      "icon": "Briefcase",
+      "blurb": "10+ years across games, XR and web."
+    },
+    {
+      "id": "skills",
+      "label": "Skills",
+      "icon": "Cpu",
+      "blurb": "The stack I work with every day."
+    },
+    {
+      "id": "education",
+      "label": "Education",
+      "icon": "GraduationCap",
+      "blurb": "Degrees and languages."
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "icon": "Send",
+      "blurb": "Let's build something together."
+    }
+  ],
+  "spotlight": {
+    "title": "The Capture Worlds",
+    "steamAppId": 826930,
+    "role": "Creator & Lead Developer",
+    "period": "2018 – 2020",
+    "status": "Released on Steam (Early Access) · Mostly Positive reviews",
+    "description": "An open-world monster-capture RPG: travel between worlds, fight and capture monsters in real time, train and evolve them, farm, craft and take on quests. I took it from concept to a commercial Steam release, including publishing, post-launch updates and Steam Workshop modding support.",
+    "highlights": [
+      "Deterministic procedural generation for quests and world content spawning",
+      "Real-time AI driven by behavior trees",
+      "Custom object pooling and memory allocation to cut runtime overhead",
+      "Steam publishing, Workshop support, live updates and AWS S3 storage"
+    ],
+    "tech": [
+      "Unity",
+      "C#",
+      "Steam",
+      "AWS S3",
+      "Behavior Trees",
+      "Procedural Generation"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Alter Learning",
+      "role": "Senior Unity Developer (Contract)",
+      "period": "Nov 2025 – Feb 2026",
+      "summary": "Reusable frameworks and XR integration for learning apps.",
+      "highlights": [
+        "Designed reusable Unity frameworks using SOLID, MVC and event-driven systems with data-driven ScriptableObjects.",
+        "Built modular XR / AR Foundation integration systems that turned screen-based apps into VR-ready cross-platform builds.",
+        "Defined development standards and documentation practices that sped up onboarding.",
+        "Optimized core systems for runtime stability, memory and rendering performance."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "AR Foundation",
+        "Meta Quest"
+      ]
+    },
+    {
+      "company": "Scopely",
+      "role": "Senior Unity Developer",
+      "period": "Jun 2024 – Aug 2025",
+      "summary": "Features and tooling for WWE Champions, a high-traffic F2P mobile game.",
+      "highlights": [
+        "Shipped a new splash screen for WWE Champions that raised player retention by 5%+.",
+        "Reduced crash rates by 5% on Android and iOS using Unity Profiler, Android Studio and BugSnag.",
+        "Built internal Unity tools for LiveOps and QA teams.",
+        "Integrated asset bundling and data-driven UI rendering for faster content delivery."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Android",
+        "iOS",
+        "BugSnag"
+      ]
+    },
+    {
+      "company": "Amber Studio",
+      "role": "Senior Unity Developer (Contract)",
+      "period": "Jan 2024 – May 2024",
+      "summary": "Gameplay systems for F2P casino titles on mobile and web.",
+      "highlights": [
+        "Engineered gameplay systems for F2P titles on Android, iOS and Facebook Games.",
+        "Established the onboarding process for new developers, reducing ramp-up time.",
+        "Expanded in-game reward engines and real-time asynchronous messaging systems.",
+        "Integrated monetization hooks and analytics frameworks."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Android",
+        "iOS",
+        "Facebook"
+      ]
+    },
+    {
+      "company": "PeakActivity",
+      "role": "Senior Unity Developer · Development Team Lead",
+      "period": "Oct 2022 – Jan 2024",
+      "summary": "Led AR/VR delivery across Quest, Magic Leap, visionOS and WebGL.",
+      "highlights": [
+        "Led Unity development of AR/VR applications for Quest, Magic Leap, visionOS and WebGL.",
+        "Integrated the ArcGIS Maps SDK for real-time geospatial VR visualization.",
+        "Built an iOS LiDAR scanning system that captures and renders point-cloud data.",
+        "Architected cloud integrations connecting Unity clients to backend microservices via REST APIs."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Meta Quest",
+        "Magic Leap",
+        "visionOS",
+        "WebGL",
+        "ArcGIS"
+      ]
+    },
+    {
+      "company": "Siono (contracted to PeakActivity)",
+      "role": "Unity Developer",
+      "period": "Jul 2020 – Sep 2022",
+      "summary": "AR, WebGL and VR training apps for enterprise clients.",
+      "highlights": [
+        "Built an iOS AR app nominated for the Unity Awards 2021, helping secure a partnership with Unity and Magic Leap.",
+        "Developed a Magic Leap 2 AR experience showcased at AWE.",
+        "Delivered a WebGL virtual-assistant framework for holographic installations.",
+        "Built interactive simulations and immersive VR training environments."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "AR Foundation",
+        "Magic Leap",
+        "WebGL"
+      ]
+    },
+    {
+      "company": "The Capture Worlds",
+      "role": "Creator & Lead Developer — Steam release",
+      "period": "Mar 2018 – Mar 2020",
+      "summary": "My own open-world RPG, from concept to Steam.",
+      "highlights": [
+        "Designed and developed a procedural open-world PC game from concept through Steam release.",
+        "Implemented deterministic procedural generation for quests, world spawning and behavior-tree AI.",
+        "Built custom object pooling and low-level memory allocation systems.",
+        "Managed Steam publishing, post-launch updates and AWS S3 storage."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Steam",
+        "AWS S3"
+      ]
+    },
+    {
+      "company": "Code Bullet",
+      "role": "Lead Unity Programmer",
+      "period": "Jan 2017 – Feb 2018",
+      "summary": "Turned a prototype into Landless, a survival game on Steam.",
+      "highlights": [
+        "Transformed a prototype into Landless, an open-world survival game released on Steam; led a team of 4.",
+        "Automated the asset pipeline, saving over $50K in production costs.",
+        "Contributed design changes that helped drive first-year sales above $100K.",
+        "Built behavior-tree AI and procedural open-world spawning."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Steam"
+      ]
+    },
+    {
+      "company": "Stoneworks Games",
+      "role": "3D Artist & Junior Unity Developer (Freelance)",
+      "period": "Feb 2013 – Jan 2015",
+      "summary": "Procedural content tools and 3D art.",
+      "highlights": [
+        "Built a procedural asset-combination system that scaled 40 assets into 4,800+ unique variations.",
+        "Developed an NPC generator that automated 80%+ of NPC creation in the final game.",
+        "Created 3D environment assets and character models."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Blender",
+        "Maya"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "title": "Languages",
+      "items": [
+        "C#",
+        "TypeScript",
+        "JavaScript",
+        "SQL",
+        "HTML",
+        "CSS",
+        "PHP"
+      ]
+    },
+    {
+      "title": "Engine & XR",
+      "items": [
+        "Unity",
+        "AR Foundation",
+        "Meta Quest",
+        "Magic Leap",
+        "visionOS",
+        "WebGL",
+        "Steam"
+      ]
+    },
+    {
+      "title": "Web & Mobile",
+      "items": [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Angular",
+        "Ionic",
+        "Android",
+        "iOS",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "title": "Cloud & Data",
+      "items": [
+        "AWS S3",
+        "Firebase",
+        "Supabase",
+        "Vercel",
+        "MongoDB",
+        "SQL Server",
+        "MySQL",
+        "WhatsApp"
+      ]
+    },
+    {
+      "title": "Tooling & DevOps",
+      "items": [
+        "Git",
+        "GitHub",
+        "Bitbucket",
+        "Jira",
+        "Trello",
+        "Jenkins",
+        "Postman",
+        "BugSnag"
+      ]
+    },
+    {
+      "title": "AI-Assisted Dev",
+      "items": [
+        "GitHub Copilot",
+        "Cursor",
+        "Claude",
+        "ChatGPT",
+        "Gemini",
+        "DeepSeek",
+        "Ollama"
+      ]
+    },
+    {
+      "title": "3D Pipeline",
+      "items": [
+        "Blender",
+        "Maya",
+        "ZBrush",
+        "Substance Painter",
+        "Photoshop"
+      ]
+    },
+    {
+      "title": "Architecture & Systems",
+      "concepts": true,
+      "items": [
+        "SOLID",
+        "MVC",
+        "Event-Driven",
+        "Dependency Injection",
+        "Object Pooling",
+        "Behavior Trees",
+        "Procedural Generation",
+        "ScriptableObjects",
+        "Addressables",
+        "REST APIs",
+        "Performance Profiling",
+        "CI/CD"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Engineering in Software Development and Management (Bachelor's)",
+      "institution": "Universidad Tecnológica de Salamanca",
+      "period": "2024 – Apr 2026",
+      "details": "Software engineering, project management, design patterns and cross-platform architecture."
+    },
+    {
+      "degree": "A.S. in IT — Multiplatform Software Development (TSU)",
+      "institution": "Universidad Tecnológica de Salamanca",
+      "period": "Sep 2022 – Aug 2024",
+      "details": "Object-oriented programming, databases, mobile and web application development."
+    }
+  ],
+  "ui": {
+    "switchLabel": "ES",
+    "switchTitle": "Ver en español",
+    "downloadCv": "Download CV",
+    "themeSettings": "Theme settings",
+    "menu": "Menu",
+    "email": "Email",
+    "levelSelect": "Level select",
+    "level": "Level",
+    "lvl": "LVL",
+    "playerProfile": "Player profile",
+    "selectLevel": "Select a level",
+    "pressStart": "Press start",
+    "introHint": "Enter / Esc to skip · click my logo anytime to come back here",
+    "themes": "Themes",
+    "themesSub": "Customize how this profile looks.",
+    "mode": "Mode",
+    "auto": "Auto",
+    "light": "Light",
+    "dark": "Dark",
+    "presets": "Presets",
+    "customColors": "Custom colors",
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "cornerRadius": "Corner radius",
+    "navigation": "Navigation",
+    "sidebar": "Sidebar",
+    "topBar": "Top bar",
+    "navHint": "Desktop only — mobile always uses the top bar.",
+    "animations": "Smooth animations",
+    "animationsSub": "Transitions and entrance effects.",
+    "reset": "Reset to default",
+    "close": "Close",
+    "liveDemo": "Live demo",
+    "newTab": "New tab",
+    "loadingBuild": "Loading build…",
+    "open": "Open",
+    "tryDemo": "Try demo",
+    "sourceCode": "Source code",
+    "challenge": "The challenge",
+    "architecture": "Architecture",
+    "techStack": "Tech stack",
+    "playable": "Playable",
+    "details": "Details",
+    "demo": "Demo",
+    "code": "Code",
+    "all": "All",
+    "filterProjects": "Filter projects",
+    "preview": "Preview",
+    "viewProjects": "View projects",
+    "contact": "Contact",
+    "playerCard": "Player card",
+    "achievements": "Achievements unlocked",
+    "spotlightKicker": "My game on Steam",
+    "viewOnSteam": "View on Steam",
+    "projectsKicker": "Playable demos & source",
+    "experienceKicker": "Quest log",
+    "skillsKicker": "Loadout",
+    "educationKicker": "Training grounds",
+    "finalLevel": "Final level",
+    "contactTitle": "Let’s build your next project",
+    "contactBody": "The fastest way to reach me is email — I usually reply within a day.",
+    "builtWith": "Built with Next.js"
+  }
+}

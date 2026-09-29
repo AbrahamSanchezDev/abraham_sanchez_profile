@@ -1,0 +1,7 @@
+{
+  "title": "Visor Interactivo de Modelos 3D",
+  "subtitle": "Vista previa web de assets lista para AR con Model Viewer",
+  "challenge": "Construí un visor web ligero con Google Model Viewer para mostrar contenido USDZ listo para AR y assets GLTF/GLB externos, con controles responsivos y un diseño visual cuidado.",
+  "architecture": "Diseño del visor basado en componentes con HTML declarativo, capas de CSS y tarjetas de modelos reutilizables listas para AR.",
+  "codeSnippetTitle": "Inserción de Model Viewer"
+}

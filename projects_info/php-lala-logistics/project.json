@@ -1,0 +1,24 @@
+{
+  "order": 9,
+  "tags": [
+    "Web"
+  ],
+  "title": "LALA - Transportation and Logistics Management System",
+  "subtitle": "PHP-based web application for managing transportation logistics and shipping documents (MVP)",
+  "techBadge": "PHP + MySQL + XAMPP",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/Lala_proyecto",
+  "demoUrl": "https://abelalamvp.rf.gd/",
+  "challenge": "Design and implement a full-stack web application MVP with user authentication, session management, and database integration to handle transportation logistics workflows. The system manages multiple users, their profiles, and shipping document records (cartas de porte) with secure data persistence.",
+  "architecture": "MVC-inspired architecture with session-based authentication, environment-based configuration, and prepared SQL statements for security. The system uses a centralized config.php for database connections and implements role-based access through login validation with session persistence. Currently deployed as MVP with one fully functional module (registro/shipping documents) and placeholder UI for future features.",
+  "techStack": [
+    "PHP 8.2",
+    "MySQL/MariaDB",
+    "HTML5",
+    "CSS3",
+    "Bootstrap 5",
+    "XAMPP",
+    "Session Management"
+  ],
+  "codeSnippetTitle": "Session-based Authentication & Prepared Statements",
+  "codeSnippet": "// Secure login with prepared statements to prevent SQL injection\n$stmt = $conn->prepare('SELECT * FROM users WHERE username = ? AND password = ?');\n$stmt->bind_param('ss', $username, $password);\n$stmt->execute();\n$result = $stmt->get_result();\nif ($result->num_rows > 0) {\n    $user = $result->fetch_assoc();\n    $_SESSION['username'] = $user['username'];\n    header('Location: php/menu.php');\n} else {\n    $_SESSION['error_message'] = 'Invalid credentials';\n    header('Location: index.php');\n}\n$stmt->close();\n$conn->close();"
+}

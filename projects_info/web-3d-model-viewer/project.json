@@ -1,0 +1,24 @@
+{
+  "order": 7,
+  "tags": [
+    "Web",
+    "XR"
+  ],
+  "title": "Interactive 3D Model Viewer",
+  "subtitle": "Web-based AR-ready asset preview with Model Viewer",
+  "techBadge": "Web 3D",
+  "repoUrl": "https://github.com/abrahamsanchezdev/ModelViewer",
+  "demoUrl": "https://abrahamsanchezdev.github.io/ModelViewer/",
+  "challenge": "Built a lightweight web viewer around Google Model Viewer to host AR-ready USDZ content and external GLTF/GLB assets with responsive controls and polished visual design.",
+  "architecture": "Component-based viewer layout with declarative HTML, CSS layering, and reusable AR-ready model cards.",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Google Model Viewer",
+    "USDZ",
+    "GLTF"
+  ],
+  "codeSnippetTitle": "Model Viewer Embed",
+  "codeSnippet": "<model-viewer\n  src=\"https://modelviewer.dev/shared-assets/models/Astronaut.glb\"\n  ios-src=\"./testObj.usdz\"\n  alt=\"Astronaut 3D Model\"\n  auto-rotate\n  camera-controls\n  ar\n  shadow-intensity=\"1.2\"\n  environment-image=\"neutral\"\n></model-viewer>"
+}

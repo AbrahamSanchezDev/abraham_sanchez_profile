@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iron Paw — Game Design Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #293448;
+      --bg2:       #3b4a5b;
+      --bg3:       #232d3a;
+      --panel:     #1f2839;
+      --border:    #1e2a38;
+      --accent:    #00e5ff;
+      --accent2:   #7fff4f;
+      --accent3:   #ff6b35;
+      --warn:      #ffd166;
+      --text:      #c8d8e8;
+      --text-dim:  #5a7080;
+      --text-head: #e8f4ff;
+      --glow:      0 0 18px rgba(0,229,255,0.25);
+      --glow2:     0 0 18px rgba(127,255,79,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Scanline overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.07) 3px,
+        rgba(0,0,0,0.07) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      padding: 80px 60px 60px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      background: linear-gradient(160deg, #1b2c43 0%, #0a0c0f 60%);
+    }
+
+    header::before {
+      content: 'IRON PAWS';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(80px, 14vw, 180px);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,229,255,0.06);
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .header-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-tag::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      color: var(--text-head);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      text-shadow: var(--glow);
+    }
+
+    h1 span {
+      color: var(--accent);
+      text-shadow: 0 0 30px rgba(0,229,255,0.6);
+    }
+
+    .header-sub {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--text-dim);
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.1em;
+    }
+
+    .header-meta {
+      margin-top: 40px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,12,15,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 16px 18px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 15px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+    }
+
+    h2 {
+      font-family: 'Orbitron', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-head);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-family: 'Orbitron', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    h3:first-child { margin-top: 0; }
+
+    p { margin-bottom: 14px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── PANELS ── */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px 0 0 4px;
+    }
+
+    .panel.green::before  { background: var(--accent2); }
+    .panel.orange::before { background: var(--accent3); }
+    .panel.yellow::before { background: var(--warn); }
+
+    /* ── GRID ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    @media (max-width: 700px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      header { padding: 50px 24px 40px; }
+      .container { padding: 0 20px; }
+      nav { padding: 0 20px; }
+    }
+
+    /* ── PILOT CARDS ── */
+    .pilot-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .pilot-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .pilot-icon {
+      font-size: 52px;
+      margin-bottom: 14px;
+      display: block;
+      line-height: 1;
+    }
+
+    .pilot-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-head);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .pilot-color {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 14px;
+    }
+
+    .pilot-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .cat-color   { color: #41e783; }
+    .raccoon-color { color: #ea8d36; }
+    .frog-color  { color: #4b74f0; }
+
+    /* ── ATTACK CARDS ── */
+    .attack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .attack-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .attack-card:hover { border-color: var(--accent); }
+
+    .attack-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .attack-info {}
+
+    .attack-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-head);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .attack-tag {
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+
+    .tag-default { background: rgba(0,229,255,0.1); color: var(--accent); }
+    .tag-powerup { background: rgba(127,255,79,0.1); color: var(--accent2); }
+
+    .attack-desc { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
+
+    /* ── LOOP DIAGRAM ── */
+    .loop-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .loop-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .loop-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 44px;
+      width: 2px;
+      height: calc(100% - 20px);
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    .loop-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--bg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .loop-content {
+      padding: 8px 0 32px;
+      flex: 1;
+    }
+
+    .loop-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-head);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .loop-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+    /* ── TAG PILLS ── */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+    .tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .lore-box {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--warn);
+      background: rgba(255,209,102,0.04);
+      padding: 24px 28px;
+      margin: 30px 0;
+      border-radius: 0 4px 4px 0;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      color: var(--warn);
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    thead tr {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--accent);
+    }
+
+    th {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px;
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      border-top: 1px solid var(--border);
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ── UTILITY ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), transparent);
+      margin: 30px 0;
+      opacity: 0.3;
+    }
+
+    strong { color: var(--text-head); font-weight: 600; }
+    em { color: var(--warn); font-style: normal; }
+
+    .highlight {
+      color: var(--accent2);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════ -->
+<header>
+  <div class="header-tag">Game Design Document // v0.2</div>
+  <h1>IRON PAW</h1>
+  <div class="header-sub">// 3D Tower Defense · Action · PC</div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <span class="meta-label">Platform</span>
+      <span class="meta-value">PC</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Genre</span>
+      <span class="meta-value">Tower Defense / Action</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Perspective</span>
+      <span class="meta-value">3D</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Team Size</span>
+      <span class="meta-value">3 Members</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value">Pre-Production</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════ -->
+<nav>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#setting">Setting</a></li>
+    <li><a href="#pilots">Pilots</a></li>
+    <li><a href="#mech">Mech</a></li>
+    <li><a href="#combat">Combat</a></li>
+    <li><a href="#enemies">Enemies</a></li>
+    <li><a href="#loop">Core Loop</a></li>
+    <li><a href="#base">Base</a></li>
+    <li><a href="#missions">Missions</a></li>
+    <li><a href="#progression">Progression</a></li>
+    <li><a href="#tone">Tone & Art</a></li>
+    <li><a href="#open">Open Questions</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     CONTENT
+═══════════════════════════════════════════════ -->
+<div class="container">
+
+  <!-- 1. OVERVIEW -->
+  <section id="overview">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Game Overview</h2>
+    </div>
+
+    <div class="panel">
+      <h3>Concept Statement</h3>
+      <p>
+        <strong>Iron Paws</strong> is a gritty 3D tower defense / action game set on an futuristic industrial invaded world. 
+        The player pilots an agile combat mech — driven by one of three anthropomorphic animal pilots — 
+        and must defend one of the last remaining strongholds against relentless waves of bug-like alien creatures. 
+        Combat, base management, resource gathering, and rescue missions interweave into a tense, evolving gameplay loop.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Pillars</h3>
+        <p><strong>Feel powerful, stay challenged.</strong> The mech grows with the player through power-ups, but the alien threat always escalates to match.</p>
+        <p><strong>Every second matters.</strong> Downtime between waves is active — collect, rescue, upgrade, explore.</p>
+        <p><strong>Personal stakes.</strong> This is the pilot's home world. The base holds survivors. Failure is meaningful.</p>
+      </div>
+      <div class="panel orange">
+        <h3>Target Audience</h3>
+        <p>Fans of action-focused tower defense hybrids (e.g. Sanctum, Orcs Must Die). Players who enjoy mech / action games with satisfying combat feedback. PC gamers who appreciate sci-fi aesthetics with strong character personality.</p>
+        <div class="tag-list">
+          <span class="tag">Ages 16+</span>
+          <span class="tag">Action fans</span>
+          <span class="tag">Tower defense fans</span>
+          <span class="tag">Sci-fi lovers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SETTING -->
+  <section id="setting">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>World & Setting</h2>
+    </div>
+
+    <div class="lore-box">
+      "They didn't come with ships. They came with rocks. And when the rocks hit the ground, chaos emerged."
+    </div>
+
+    <div class="panel">
+      <h3>The World</h3>
+      <p>
+        The game takes place on the <strong>pilot's home planet</strong> — a once-advanced civilization now in the final stages of collapse. 
+        The alien invasion did not arrive as a fleet but as a <em>meteor shower</em>, each meteorite a biological delivery system 
+        carrying swarms of bug-like creatures. Years after the initial impact, the planet's cities lie in ruin.
+      </p>
+      <p>
+        Alongside the creatures came their growth: a spreading <strong>alien jungle</strong> — bioluminescent, aggressive, 
+        and deeply unsettling. It is not native flora. It is the invasion made permanent. It creeps through broken concrete, 
+        climbs rusted towers, and pulses with eerie light at night. The further the player ventures from the stronghold, 
+        the denser the alien growth becomes.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Visual Setting</h3>
+        <p>
+          <strong>Ruined futuristic city overtaken by alien jungle.</strong> Crumbling skyscrapers wrapped in glowing vines. 
+          Shattered highways home to alien root systems. Flooded plazas lit by bioluminescent growths. 
+          Cold dead metal versus living, pulsing alien color.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Broken concrete</span>
+          <span class="tag">Exposed wiring</span>
+          <span class="tag">Alien flora</span>
+          <span class="tag">Bioluminescence</span>
+          <span class="tag">Rusted steel</span>
+        </div>
+      </div>
+      <div class="panel yellow">
+        <h3>The Stronghold</h3>
+        <p>
+          The player's base is <strong>one of the last functional strongholds</strong> on the planet. 
+          Survivors live here. Wounded colleagues return here. It must not fall. 
+          The stronghold's condition and defenses are central to gameplay — it is as much a character as the pilot.
+        </p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>The Alien Growth as Threat</h3>
+      <p>
+        The alien jungle is not passive scenery. It acts as a <strong>living threat indicator</strong>: 
+        denser overgrowth signals deeper enemy territory and higher danger. Flora can <strong>spawn smaller enemies</strong>, 
+        <strong>block player paths</strong>, and obstruct base perimeters. 
+        Rare alien plants also drop <em>valuable resources</em> — making harvesting a risk-reward decision.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. PILOTS -->
+  <section id="pilots">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Pilots</h2>
+    </div>
+
+    <p style="margin-bottom:28px;">
+      The player can customize the name and color of the mech, and select one of three anthropomorphic animal pilots before each run. 
+      Each pilot is a distinct character with their own personality, visual identity, and mech color scheme. 
+      The mech chassis is identical across all pilots — only the color and pilot character differ. 
+      Pilot choice is cosmetic and narrative; it does not affect starting stats.
+    </p>
+
+    <div class="grid-3">
+      <div class="pilot-card">
+        <span class="pilot-icon">🐱</span>
+        <div class="pilot-name">The Cat</div>
+        <div class="pilot-color cat-color">Mech Color: Green</div>
+        <div class="pilot-desc">Sharp, sarcastic, and agile-minded. Moves with precision. Talks like someone who has seen too much but refuses to show it.</div>
+      </div>
+      <div class="pilot-card">
+        <span class="pilot-icon">🦝</span>
+        <div class="pilot-name">The Raccoon</div>
+        <div class="pilot-color raccoon-color">Mech Color: Orange</div>
+        <div class="pilot-desc">Resourceful and scrappy. A tinkerer by nature. Has probably already figured out three ways to survive this. Probably.</div>
+      </div>
+      <div class="pilot-card">
+        <span class="pilot-icon">🐸</span>
+        <div class="pilot-name">The Frog</div>
+        <div class="pilot-color frog-color">Mech Color: Blue</div>
+        <div class="pilot-desc">Calm under pressure. Methodical. Speaks little. When they do say something, it matters. Lethal in the field.</div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:20px;">
+      <h3>Design Notes</h3>
+      <p>Pilots appear in cockpit view / HUD portraits during gameplay and in cutscenes. Voice lines are unique per pilot. 
+      Future iterations may explore minor stat differences per pilot, but initial scope keeps them cosmetically distinct only.</p>
+    </div>
+  </section>
+
+  <!-- 4. MECH -->
+  <section id="mech">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>The Mech</h2>
+    </div>
+
+    <div class="panel">
+      <h3>Base Design</h3>
+      <p>
+        The mech is a <strong>medium-class combat unit</strong> — not a lumbering tank, not a fragile scout. 
+        It is <em>agile and responsive</em>, built to feel like an extension of the player's intention. 
+        Movement is fluid. Attacks have weight and feedback. The pilot feels in control at all times.
+      </p>
+      <p>
+        The base mech is shared across all pilots. Pilot selection changes its <strong>color scheme</strong> only. 
+        As the player collects power-ups during a run, the mech <strong>visually evolves</strong> — 
+        new weapon modules attach, panels shift, silhouette changes. Progression is visible.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Feel & Movement</h3>
+        <p>Movement: fast, directional, responsive. No sluggishness. The mech can dash, reposition, and engage at any range. 
+        Players should feel like a predator, not a turret.</p>
+        <div class="tag-list">
+          <span class="tag">Agile</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">Not heavy</span>
+          <span class="tag">Not slow</span>
+        </div>
+      </div>
+      <div class="panel orange">
+        <h3>Progression</h3>
+        <p>Power-ups add new weapons and mechanics to the mech mid-run. Visual changes reflect each upgrade. 
+        Players build a personalized loadout each session through the order and type of power-ups they collect.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. COMBAT -->
+  <section id="combat">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Combat System</h2>
+    </div>
+
+    <p style="margin-bottom:28px;">
+      Combat is the primary expression of player skill. The attack roster covers short, mid, and long range, 
+      with crowd-control and precision options. The full set unlocks progressively via power-ups — 
+      players start with the core three and grow from there.
+    </p>
+
+    <div class="attack-grid">
+      <div class="attack-card">
+        <span class="attack-icon">🔫</span>
+        <div class="attack-info">
+          <div class="attack-name">Standard Shot</div>
+          <span class="attack-tag tag-default">Default</span>
+          <div class="attack-desc">Baseline ranged attack. Fast, reliable, mid-range. The bread and butter of every engagement. Always available.</div>
+        </div>
+      </div>
+
+      <div class="attack-card">
+        <span class="attack-icon">⚡</span>
+        <div class="attack-info">
+          <div class="attack-name">Dash / Ram</div>
+          <span class="attack-tag tag-default">Default</span>
+          <div class="attack-desc">A high-speed charge that doubles as both mobility and melee attack. Close the gap or scatter a cluster of enemies. Directional.</div>
+        </div>
+      </div>
+
+      <div class="attack-card">
+        <span class="attack-icon">💥</span>
+        <div class="attack-info">
+          <div class="attack-name">Smash</div>
+          <span class="attack-tag tag-default">Default</span>
+          <div class="attack-desc">Ground-pound or melee slam. High damage in a small radius. Excellent for crowd control when enemies swarm close. Has recovery time.</div>
+        </div>
+      </div>
+
+      <div class="attack-card">
+        <span class="attack-icon">🌀</span>
+        <div class="attack-info">
+          <div class="attack-name">Energy Emission</div>
+          <span class="attack-tag tag-powerup">Power-Up</span>
+          <div class="attack-desc">A burst of energy radiating outward from the mech in all directions. Ideal against swarms closing in. Area-of-effect. Short cooldown.</div>
+        </div>
+      </div>
+
+      <div class="attack-card">
+        <span class="attack-icon">🚀</span>
+        <div class="attack-info">
+          <div class="attack-name">Rocket Shot</div>
+          <span class="attack-tag tag-powerup">Power-Up</span>
+          <div class="attack-desc">Long-range heavy projectile. Locks onto distant or high-priority targets. High damage, slow reload. Ideal for intercepting incoming meteorites.</div>
+        </div>
+      </div>
+
+      <div class="attack-card">
+        <span class="attack-icon">🛸</span>
+        <div class="attack-info">
+          <div class="attack-name">Sky Laser</div>
+          <span class="attack-tag tag-powerup">Power-Up</span>
+          <div class="attack-desc">Player marks a target location. A precision laser strikes from above. Satisfying and strategic. Useful for dense clusters or priority targets.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:24px;">
+      <h3>Combat Design Notes</h3>
+      <p>
+        Default attacks ensure the player is never helpless. Power-up attacks expand the toolkit without replacing fundamentals. 
+        The combination of short (Smash, Energy Emission), mid (Shot, Dash), and long range (Rocket, Sky Laser) 
+        means the player always has a contextually appropriate response to any threat. 
+        <strong>Combat should feel deliberate and rewarding, not button-mashy.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. ENEMIES -->
+  <section id="enemies">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Enemies</h2>
+    </div>
+
+    <div class="panel">
+      <h3>Arrival: The Meteorite System</h3>
+      <p>
+        Enemies do not spawn from off-screen edges — they <strong>arrive via meteorites</strong> that crash-land into the environment. 
+        Each meteorite impact is a dynamic event: the player can see incoming trajectories, 
+        choose to intercept the meteorite mid-flight with ranged attacks, or brace for the swarm that emerges on impact. 
+        This system creates immediate moment-to-moment decisions and makes every wave feel like an event, not just a timer.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Base Enemy: Bug-Alien Swarm</h3>
+        <p>
+          The core enemy type is an insectoid alien creature — fast-moving, numerous, 
+          and threatening through sheer volume. Individually weak, collectively dangerous. 
+          Swarm behavior is the primary threat pattern.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Fast</span>
+          <span class="tag">Numerous</span>
+          <span class="tag">Swarm AI</span>
+          <span class="tag">Insectoid</span>
+        </div>
+      </div>
+      <div class="panel yellow">
+        <h3>Flora-Spawned Enemies</h3>
+        <p>
+          The alien jungle is not just environmental dressing. 
+          Certain alien plant structures can <strong>spawn smaller creatures</strong>, 
+          making overgrown areas actively hostile. Destroying flora yields resources 
+          but may trigger an immediate local threat response.
+        </p>
+      </div>
+    </div>
+
+    <div class="panel orange">
+      <h3>Enemy Escalation</h3>
+      <p>
+        Each level increases swarm size, meteorite frequency, and enemy variety. 
+        Later levels should introduce <em>elite or specialized enemy types</em> — 
+        armored variants, fast runners, ranged attackers — to force players to use their full attack toolkit. 
+        Enemy types and escalation curves are TBD and will be developed during production.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. CORE LOOP -->
+  <section id="loop">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Core Gameplay Loop</h2>
+    </div>
+
+    <div class="loop-steps">
+      <div class="loop-step">
+        <div class="loop-num">1</div>
+        <div class="loop-content">
+          <div class="loop-title">Meteorite Incoming</div>
+          <div class="loop-desc">Player spots incoming meteorites on radar / visually in the sky. Decision point: intercept with long-range attacks, or prepare defenses for impact swarm. Timing and positioning matter.</div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-num">2</div>
+        <div class="loop-content">
+          <div class="loop-title">Wave Combat</div>
+          <div class="loop-desc">Swarms emerge from impact craters. Player engages using the full mech combat system — dash, smash, shoot, and unleash power-up abilities. Swarms target both the player and the base.</div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-num">3</div>
+        <div class="loop-content">
+          <div class="loop-title">Active Downtime</div>
+          <div class="loop-desc">Between waves, the player is not idle. They collect resources from the environment (including from alien flora), explore nearby areas, and prepare the base. Time pressure is implicit — the next wave is always coming.</div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-num">4</div>
+        <div class="loop-content">
+          <div class="loop-title">Mission Layer</div>
+          <div class="loop-desc">During active or downtime phases, mission objectives may trigger — most notably, finding a wounded colleague and carrying them back to base. Carrying limits mech speed, creating deliberate vulnerability.</div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-num">5</div>
+        <div class="loop-content">
+          <div class="loop-title">Base Upgrade</div>
+          <div class="loop-desc">Collected resources are spent on base defense systems — turrets, barriers, reinforced walls. These upgrades persist through the wave and reduce pressure on the player during combat.</div>
+        </div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-num">6</div>
+        <div class="loop-content">
+          <div class="loop-title">Power-Up Acquisition</div>
+          <div class="loop-desc">Power-ups are awarded through combat performance, mission completion, or found in the environment. Each power-up adds a new attack or mechanic to the mech. The mech visually evolves with each addition.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. BASE DEFENSE -->
+  <section id="base">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>Base Defense System</h2>
+    </div>
+
+    <div class="panel">
+      <h3>Overview</h3>
+      <p>
+        The stronghold is a living part of the game — not just a health bar to protect. 
+        Players spend collected resources to <strong>upgrade and expand its defensive capabilities</strong> 
+        between waves. These upgrades reduce the load on the player during combat, 
+        allowing a balance between active mech gameplay and passive defense.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Defense Upgrade Examples</h3>
+        <p>The following are initial concepts. Full design TBD during production:</p>
+        <div class="tag-list" style="margin-top:12px;">
+          <span class="tag">Auto-turrets</span>
+          <span class="tag">Reinforced walls</span>
+          <span class="tag">Energy barriers</span>
+          <span class="tag">Watchtowers</span>
+          <span class="tag">Repair stations</span>
+          <span class="tag">Floodlights</span>
+        </div>
+      </div>
+      <div class="panel yellow">
+        <h3>Resources</h3>
+        <p>Resources are collected from the environment during downtime — dropped by defeated enemies, 
+        harvested from alien flora (with risk), or found in ruins. 
+        Alien flora harvesting yields <em>rare, high-value materials</em> 
+        but may trigger local enemy spawn. Risk vs. Reward.</p>
+      </div>
+    </div>
+
+    <div class="panel orange">
+      <h3>Progression: Hybrid Persistence</h3>
+      <p>
+        Each level starts with the base reset — the stronghold does not carry over its upgrades. 
+        However, the player retains a <strong>small meaningful unlock between levels</strong>: 
+        a passive bonus, a weapon unlock, a permanent ability, or a narrative/story element. 
+        This creates cumulative progress without requiring full meta-progression balance — 
+        keeping scope manageable for a team of three while still rewarding continued play.
+      </p>
+    </div>
+  </section>
+
+  <!-- 9. MISSIONS -->
+  <section id="missions">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>Missions & Objectives</h2>
+    </div>
+
+    <p style="margin-bottom:28px;">
+      Levels are structured around a primary objective (survive all waves, defend the base) 
+      with optional and triggered secondary missions layered throughout. 
+      Missions give purpose to downtime and deepen the narrative stakes.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mission Type</th>
+          <th>Description</th>
+          <th>Gameplay Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Survive the Wave</strong></td>
+          <td>Defeat all enemies from a meteorite impact. Primary objective per wave.</td>
+          <td>Core combat loop. Failure = base damage.</td>
+        </tr>
+        <tr>
+          <td><strong>Rescue Colleague</strong></td>
+          <td>Locate a wounded colleague in the field and carry them back to the stronghold.</td>
+          <td>Limits mech speed while carrying. Creates vulnerability. Story payoff on success.</td>
+        </tr>
+        <tr>
+          <td><strong>Intercept Meteorite</strong></td>
+          <td>Destroy an incoming meteorite before it impacts, preventing a swarm.</td>
+          <td>Prevents a full wave. Requires long-range attacks and fast repositioning.</td>
+        </tr>
+        <tr>
+          <td><strong>Resource Run</strong></td>
+          <td>Collect a target amount of resources before the next wave hits.</td>
+          <td>Drives exploration. Alien flora risk-reward. Time pressure.</td>
+        </tr>
+        <tr>
+          <td><strong>Destroy Flora Node</strong></td>
+          <td>Eliminate a high-density alien growth structure spawning enemies.</td>
+          <td>Stops passive enemy generation. High local risk on engagement.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 10. PROGRESSION -->
+  <section id="progression">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2>Progression & Structure</h2>
+    </div>
+
+    <div class="panel">
+      <h3>Level Structure</h3>
+      <p>
+        The game is <strong>level-based</strong> with a clear start and end per mission. 
+        Each level has a defined set of waves, a narrative beat, and at least one rescue/mission objective. 
+        Levels escalate in enemy density, meteorite frequency, and environmental complexity. 
+        A campaign structure (overworld map or linear chapter select) will connect levels — design TBD.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Within a Run</h3>
+        <p>Mech evolves through power-ups collected during the level. 
+        Base upgrades built from resources. No carryover of these between levels.</p>
+      </div>
+      <div class="panel orange">
+        <h3>Between Runs (Persistence)</h3>
+        <p>One meaningful unlock persists per completed level — 
+        a passive stat bonus, a new starting weapon option, or a narrative element. 
+        Keeps long-term engagement without full meta-progression complexity.</p>
+      </div>
+    </div>
+
+    <div class="panel yellow">
+      <h3>Power-Up Design Principles</h3>
+      <p>
+        Power-ups should <strong>feel immediately impactful</strong>. Each one visibly changes the mech and opens a new gameplay option. 
+        The order in which power-ups are found should create <em>emergent build variety</em> — 
+        no two runs feel identical. Power-ups are never passive stat boosts; they always add a new attack or mechanic.
+      </p>
+    </div>
+  </section>
+
+  <!-- 11. TONE & ART -->
+  <section id="tone">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2>Tone & Art Direction</h2>
+    </div>
+
+    <div class="panel">
+      <h3>Tone</h3>
+      <p>
+        <strong>Gritty sci-fi.</strong> The world has already lost. What remains is the will to hold on. 
+        The tone is serious but not hopeless — the pilots have personality and dark humor, 
+        but the stakes are real. There is no comic relief enemy. 
+        The alien threat is genuinely menacing.
+      </p>
+      <p>
+        Think: <em>grounded military sci-fi meets character-driven animation aesthetic</em>. 
+        The anthropomorphic pilots give the game personality and approachability 
+        without undermining the weight of the setting.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel green">
+        <h3>Visual Direction</h3>
+        <div class="tag-list" style="margin-bottom:14px;">
+          <span class="tag">Dark palette</span>
+          <span class="tag">Bioluminescent accents</span>
+          <span class="tag">Industrial decay</span>
+          <span class="tag">Alien overgrowth</span>
+          <span class="tag">Neon warning signs</span>
+        </div>
+        <p>
+          Cold, broken metal contrasted with warm, pulsing alien color. 
+          The alien jungle should feel like it's <em>breathing</em>. 
+          Mech design is functional and worn — no pristine chrome.
+        </p>
+      </div>
+      <div class="panel orange">
+        <h3>Audio Direction</h3>
+        <p>
+          Heavy mechanical sound design for the mech. 
+          Organic, chittering, unsettling sounds for alien enemies. 
+          Score: tense industrial / electronic with moments of quiet dread between waves. 
+          Pilot voice lines: character-specific, sparse, impactful.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. OPEN QUESTIONS -->
+  <section id="open">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2>Open Questions & TBD</h2>
+    </div>
+
+    <p style="margin-bottom:24px;">
+      The following items are identified as requiring further design decisions during pre-production and production.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Question</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>What exactly persists between levels?</td>
+          <td>TBD. Hybrid persistence. Specific unlock types TBD.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Campaign structure: linear chapters or overworld map?</td>
+          <td>TBD. Linear may be simpler for a 3-person team.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Do pilots have minor stat differences?</td>
+          <td>Currently cosmetic only. Revisit after core loop is built.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>How many levels in the full game?</td>
+          <td>TBD. Recommend defining a vertical slice first.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Elite/specialized enemy types?</td>
+          <td>Confirmed they exist. Design TBD during production.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Co-op multiplayer?</td>
+          <td>Not in current scope. Could be revisited post-launch.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Full power-up list and unlock order?</td>
+          <td>Core 6 attacks defined. Full tree TBD.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Base defense upgrade tree?</td>
+          <td>Categories identified. Full design TBD.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Mech health / damage system?</td>
+          <td>Not yet designed. TBD.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Game name confirmed?</td>
+          <td>"Iron Paw" — strong candidate, not yet final.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <span>IRON PAW</span> // Game Design Document v0.2 // Pre-Production // Team of 3
+  <br><br>
+  This document is a living reference. Update it as design decisions are made.
+</footer>
+
+</body>
+</html>

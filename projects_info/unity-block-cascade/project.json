@@ -1,0 +1,22 @@
+{
+  "order": 3,
+  "tags": [
+    "Unity",
+    "Web"
+  ],
+  "title": "Block Cascade",
+  "subtitle": "Dynamic grid-based puzzle game with connected-block matching and chain reactions",
+  "techBadge": "Unity 6.0",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/blocks-cascade",
+  "demoUrl": "https://abrahamsanchezdev.github.io/blocks-cascade/",
+  "challenge": "Implement a responsive grid-based puzzle system where blocks fall and refill dynamically. The core challenge was efficiently detecting connected blocks of the same color using a flood-fill algorithm and managing asynchronous state during block collection, removal, and chain reactions.",
+  "architecture": "Singleton pattern for GameManager and GridManager; event-driven block interactions with flood-fill algorithm for connected-component detection; coroutine-based state management for animation timing and grid refill sequences.",
+  "techStack": [
+    "Unity 6.0",
+    "C#",
+    "TextMeshPro",
+    "UGUI"
+  ],
+  "codeSnippetTitle": "Connected Block Detection with Flood-Fill",
+  "codeSnippet": "List<Block> FindConnectedBlocks(Block startBlock) {\n  List<Block> connected = new List<Block>();\n  HashSet<Block> visited = new HashSet<Block>();\n  Queue<Block> toCheck = new Queue<Block>();\n  int targetColor = startBlock.IconIndex;\n  toCheck.Enqueue(startBlock);\n  visited.Add(startBlock);\n  while (toCheck.Count > 0) {\n    Block current = toCheck.Dequeue();\n    connected.Add(current);\n    CheckAdjacent(current.X + 1, current.Y, targetColor, visited, toCheck);\n  }\n  return connected;\n}"
+}

@@ -1,0 +1,22 @@
+{
+  "order": 5,
+  "tags": [
+    "Unity",
+    "Web"
+  ],
+  "title": "Unity Room Tools WebGL",
+  "subtitle": "Interactive room measurement and lighting tools in a WebGL demo",
+  "techBadge": "Unity WebGL",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/unity-room-tools-testing",
+  "demoUrl": "https://abrahamsanchezdev.github.io/unity-room-tools-testing/",
+  "challenge": "Built a Unity WebGL MVP that renders a virtual room and interactive ruler tool while keeping the client preview lightweight and mobile-responsive.",
+  "architecture": "Unity WebGL loader with build asset streaming, UI-driven tool selection, and a compact scene-driven interaction model.",
+  "techStack": [
+    "Unity",
+    "WebGL",
+    "JavaScript",
+    "GitHub Pages"
+  ],
+  "codeSnippetTitle": "WebGL Loader Configuration",
+  "codeSnippet": "var config = {\n  dataUrl: buildUrl + \"/shader-testing.data.unityweb\",\n  frameworkUrl: buildUrl + \"/shader-testing.framework.js.unityweb\",\n  codeUrl: buildUrl + \"/shader-testing.wasm.unityweb\",\n  streamingAssetsUrl: \"StreamingAssets\",\n  companyName: \"PeakActivity\",\n  productName: \"WhiteCanvas\",\n  productVersion: \"0.1\",\n};"
+}

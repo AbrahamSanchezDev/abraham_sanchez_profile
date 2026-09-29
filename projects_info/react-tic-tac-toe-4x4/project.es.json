@@ -1,0 +1,7 @@
+{
+  "title": "Gato 4x4 con React",
+  "subtitle": "Gato 4x4 interactivo con oponente de IA y diseño responsivo",
+  "challenge": "Implementar una detección eficiente de ganador en un tablero 4x4 con múltiples condiciones de victoria (filas, columnas, diagonales) e integrar una IA que sugiere movimientos válidos sin necesitar algoritmos minimax complejos para este tamaño de tablero.",
+  "architecture": "Arquitectura de componentes funcionales en React con hooks para el estado; la lógica del juego está separada en funciones auxiliares con constantes para jugadores y condiciones de juego, usando un patrón orientado a eventos para las interacciones.",
+  "codeSnippetTitle": "Lógica de detección de ganador"
+}

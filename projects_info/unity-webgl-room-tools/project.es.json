@@ -1,0 +1,7 @@
+{
+  "title": "Herramientas de Habitación en Unity WebGL",
+  "subtitle": "Herramientas interactivas de medición e iluminación de habitaciones en una demo WebGL",
+  "challenge": "Construí un MVP en Unity WebGL que renderiza una habitación virtual y una regla interactiva, manteniendo la vista previa ligera y adaptable a móviles.",
+  "architecture": "Loader de Unity WebGL con streaming de assets del build, selección de herramientas desde la UI y un modelo de interacción compacto basado en la escena.",
+  "codeSnippetTitle": "Configuración del loader de WebGL"
+}

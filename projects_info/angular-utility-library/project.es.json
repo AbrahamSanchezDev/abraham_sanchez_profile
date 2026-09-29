@@ -1,0 +1,6 @@
+{
+  "subtitle": "Librería de utilidades para Angular: arreglos, formato de texto, transformación de HTML y descarga de archivos",
+  "challenge": "Diseñar una librería de utilidades modular y reutilizable con capacidades robustas de manipulación de texto y arreglos, manteniendo una separación clara de responsabilidades y extensibilidad. La solución debía manejar sanitización de HTML, reemplazos complejos de texto y descargas de archivos desde el navegador de forma compatible con Angular.",
+  "architecture": "Jerarquía de utilidades basada en herencia (TextTool → RemoveReplaceOption → HtmlTextTool) con composición para operaciones basadas en reglas. Cada clase encapsula la lógica de su dominio (arreglos, texto, descargas) con interfaces extensibles para reglas flexibles de reemplazo y eliminación.",
+  "codeSnippetTitle": "Ejemplo de formato de texto HTML"
+}

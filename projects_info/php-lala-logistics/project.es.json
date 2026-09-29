@@ -1,0 +1,7 @@
+{
+  "title": "LALA - Sistema de Gestión de Transporte y Logística",
+  "subtitle": "Aplicación web en PHP para gestionar logística de transporte y documentos de envío (MVP)",
+  "challenge": "Diseñar e implementar un MVP web full-stack con autenticación, manejo de sesiones e integración con base de datos para flujos de logística de transporte. El sistema administra múltiples usuarios, sus perfiles y registros de cartas de porte con persistencia segura de datos.",
+  "architecture": "Arquitectura inspirada en MVC con autenticación por sesión, configuración por entorno y consultas SQL preparadas por seguridad. Usa un config.php centralizado para la conexión a la base de datos y control de acceso mediante validación de login con sesiones persistentes. Desplegado como MVP con un módulo completamente funcional (registro de cartas de porte) y UI provisional para futuras funciones.",
+  "codeSnippetTitle": "Autenticación por sesión y consultas preparadas"
+}

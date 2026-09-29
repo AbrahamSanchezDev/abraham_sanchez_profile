@@ -1,0 +1,23 @@
+{
+  "order": 4,
+  "tags": [
+    "Unity",
+    "XR"
+  ],
+  "title": "Image Tracking AR POC",
+  "subtitle": "Unity AR prototype for QR/image tracking with runtime prefab placement",
+  "techBadge": "Unity AR",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/Image-Tracking",
+  "demoUrl": "",
+  "challenge": "Built a Unity AR image tracking proof-of-concept that detects reference images and spawns tracked prefabs in mobile runtime while keeping the app portable to Android and iOS.",
+  "architecture": "Event-driven AR tracking with prefab pooling and camera-facing world-space UI for tracked targets.",
+  "techStack": [
+    "Unity 2024.3.10f1",
+    "AR Foundation",
+    "XR Reference Image Library",
+    "C#",
+    "Android APK"
+  ],
+  "codeSnippetTitle": "Tracked Image Spawn and Update",
+  "codeSnippet": "private void UpdateImage(ARTrackedImage data) { var go = ShowObj(data.referenceImage.name, true); if (go != null) { go.transform.position = data.transform.position; go.transform.rotation = data.transform.rotation; ShowText(\"tracking \" + data.referenceImage.name); } }"
+}

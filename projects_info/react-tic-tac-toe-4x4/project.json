@@ -1,0 +1,21 @@
+{
+  "order": 10,
+  "tags": [
+    "Web"
+  ],
+  "title": "React Tic-Tac-Toe Game",
+  "subtitle": "Interactive 4x4 Tic-Tac-Toe with AI opponent and responsive design",
+  "techBadge": "React 18",
+  "repoUrl": "https://github.com/abrahamsanchezdev/react-tutorials",
+  "demoUrl": "https://abrahamsanchezdev.github.io/react-tutorials/",
+  "challenge": "Implement efficient win detection on a 4x4 board with multiple win conditions (rows, columns, diagonals), and integrate a computer AI that suggests valid moves without requiring complex minimax algorithms for this extended board size.",
+  "architecture": "Component-based React architecture with functional components and hooks for state management; game logic separated into helper functions with constant definitions for player states and game conditions, implementing an event-driven pattern for user interactions.",
+  "techStack": [
+    "React 18",
+    "JavaScript (ES6+)",
+    "CSS3",
+    "GitHub Pages"
+  ],
+  "codeSnippetTitle": "Win Detection Logic",
+  "codeSnippet": "const IsWinner = (gameBoard, currentMove, currentPlayer) => {\n  let boar = [...gameBoard];\n  boar[currentMove] = currentPlayer;\n  const winLines = [[0,1,2,3], [4,5,6,7], /* ... */, [3,6,9,12]];\n  for (let i = 0; i < winLines.length; i++) {\n    const [c1, c2, c3, c4] = winLines[i];\n    if (boar[c1] > 0 && boar[c1] === boar[c2] &&\n        boar[c2] === boar[c3] && boar[c3] === boar[c4]) {\n      return true;\n    }\n  }\n  return false;\n};"
+}

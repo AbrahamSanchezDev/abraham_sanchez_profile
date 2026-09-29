@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abraham Sanchez — Developer Profile
 
-## Getting Started
-
-First, run the development server:
+Next.js 16 portfolio. All content is data-driven: edit JSON, the page updates.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Languages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The site lives at `/en` and `/es`. `/` redirects based on the browser language (`proxy.ts`). The EN/ES button keeps the reader on the same section.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Updating content
 
-## Learn More
+| What | Where |
+|---|---|
+| Name, summary, stats, experience, skills, education, contact, intro on/off, default theme/nav, button labels (`ui`) | `content/profile.en.json` (English) and `content/profile.es.json` (Spanish) — keep both with the same keys; the build fails if the Spanish file is missing one |
+| Projects | one folder per project in `projects_info/<project-slug>/` |
+| CV downloads | drop PDFs in `public/cv/` using the file names listed in `person.cv` (buttons only appear if the file exists) |
 
-To learn more about Next.js, take a look at the following resources:
+### Adding a project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create `projects_info/<project-slug>/project.json` (kebab-case folder name = project id). Fields: `order`, `tags` (`Unity` / `Web` / `XR` — drive the filter chips), `title`, `subtitle`, `techBadge`, `repoUrl`, `demoUrl` (optional → "Try demo" pop-up), `demoEmbeddable: false` (for links that can't load in an iframe, e.g. npm), `challenge`, `architecture`, `techStack`, `codeSnippetTitle`, `codeSnippet`.
+2. Add media as `preview-01.gif`, `preview-02.png`, … (sorted by name; the first is the card cover).
+3. Optional: add `project.es.json` with the Spanish `title`, `subtitle`, `challenge`, `architecture`, `codeSnippetTitle` (any field left out falls back to English).
+4. Run `npm run media` — converts media to optimized WebP in `public/projects/<slug>/` (GIFs → animated WebP + still poster). Raw media in `projects_info/` is git-ignored; commit the `public/projects` output.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Tech icons come from [simple-icons](https://simpleicons.org); names are matched in `app/lib/data.ts` (`ICON_ALIASES`). Unknown tech shows a monogram badge.
 
-## Deploy on Vercel
+### Sections
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`sections` (in both profile files) controls nav order, labels, intro "levels" and icons (`User`, `Gamepad2`, `Boxes`, `Briefcase`, `Cpu`, `GraduationCap`, `Send` — add more in `app/components/ui.tsx`).

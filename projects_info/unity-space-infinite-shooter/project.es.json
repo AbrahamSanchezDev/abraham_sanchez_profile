@@ -1,0 +1,6 @@
+{
+  "subtitle": "Exploración espacial infinita con dos modos de juego: deriva estratégica y arenas de combate",
+  "challenge": "Combinar la generación de un mundo infinito con la gestión persistente de recursos entre dos modos de juego distintos. El reto incluyó implementar un reinicio de origen flotante para evitar el desbordamiento de coordenadas, pooling eficiente de chunks para cargar y descargar entidades dinámicamente y persistencia de estado entre escenas, manteniendo buen rendimiento en hardware variado.",
+  "architecture": "Arquitectura MVC con datos de juego singleton, comunicación orientada a eventos mediante EventHub y object pooling para proyectiles y entidades del entorno. La aparición de chunks en cuadrícula (50x50) con reinicio de origen flotante permite un mundo verdaderamente infinito; los dos ciclos de juego (Drift para exploración, Strike para combate en arena) usan managers separados que comparten el estado persistente de recursos.",
+  "codeSnippetTitle": "Reinicio de origen flotante y manejo de chunks"
+}

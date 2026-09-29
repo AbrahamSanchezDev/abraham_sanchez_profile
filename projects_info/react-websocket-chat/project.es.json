@@ -1,0 +1,7 @@
+{
+  "title": "Chat WebSocket con React",
+  "subtitle": "Demo de chat con WebSocket en React usando Create React App",
+  "challenge": "Implementar una UI de chat con WebSocket mínima y resiliente que transmite mensajes al cliente y mantiene un estado simple para extenderla fácilmente.",
+  "architecture": "Arquitectura de componentes React orientada a eventos con ciclo de vida de conexión WebSocket y manejo de mensajes estilo observador.",
+  "codeSnippetTitle": "Conexión WebSocket y manejador onmessage"
+}

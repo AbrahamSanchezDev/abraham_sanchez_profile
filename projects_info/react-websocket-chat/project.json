@@ -1,0 +1,22 @@
+{
+  "order": 11,
+  "tags": [
+    "Web"
+  ],
+  "title": "Abe React Learning",
+  "subtitle": "React WebSocket chat demo using Create React App",
+  "techBadge": "React+WebSocket",
+  "repoUrl": "https://github.com/AbrahamSanchezDev/react-local-websocket-chat",
+  "demoUrl": "",
+  "challenge": "Implement a minimal, resilient WebSocket chat UI that streams messages to the client and keeps state simple for easy extension.",
+  "architecture": "Event-driven React component architecture with WebSocket connection lifecycle and observer-style message handling.",
+  "techStack": [
+    "React",
+    "TypeScript",
+    "WebSocket",
+    "Create React App",
+    "react-icons"
+  ],
+  "codeSnippetTitle": "WebSocket connection and onmessage handler",
+  "codeSnippet": "useEffect(() => {\\n  const newSocket = new WebSocket(\"ws://localhost:8087\");\\n  newSocket.onmessage = (event) => {\\n    event.data.text().then((text: string) => {\\n      setMensajes((prev) => [...prev, text]);\\n    });\\n  };\\n  newSocket.onclose = () => console.log(\"disconnected\");\\n  setSocket(newSocket);\\n}, []);"
+}

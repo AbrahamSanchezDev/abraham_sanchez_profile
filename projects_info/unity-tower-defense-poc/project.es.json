@@ -1,0 +1,7 @@
+{
+  "title": "POC de Tower Defense",
+  "subtitle": "Prototipo de tower defense en Unity con sistemas de gameplay modulares, hecho para una entrevista.",
+  "challenge": "Creado como reto técnico para una entrevista de trabajo en Unity: entregar un prototipo de tower defense limpio y jugable en poco tiempo. El enfoque fue crear sistemas organizados, código mantenible y un ciclo de juego completo en un plazo corto.",
+  "architecture": "Arquitectura modular en Unity con control de estado del juego mediante Singleton, comunicación orientada a eventos y sistemas basados en prefabs y ScriptableObjects.",
+  "codeSnippetTitle": "Configuración de la escena principal e inicialización del estado"
+}
