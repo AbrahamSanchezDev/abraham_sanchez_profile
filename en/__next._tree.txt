@@ -1,0 +1,10 @@
+:HL["/abraham_sanchez_profile/_next/static/chunks/00f5qbtpa9.58.css","style"]
+:HL["/abraham_sanchez_profile/_next/static/media/0595f7052377a1a2-s.p.0u0xtu5i3hze-.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/abraham_sanchez_profile/_next/static/media/0acc7fdf55eb3220-s.p.12o-f1.6qra-s.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/abraham_sanchez_profile/_next/static/media/235a0ef330592118-s.p.0b723ysm_ve25.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/abraham_sanchez_profile/_next/static/media/6c98c9fb873995d2-s.p.0o4ax6vjjs2k3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/abraham_sanchez_profile/_next/static/media/a083361d37caf3d1-s.p.08pvxdps0wo-e.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/abraham_sanchez_profile/_next/static/media/c6e2684784a55443-s.p.0v346keojskif.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/abraham_sanchez_profile/_next/static/media/c9bd7381a27f2960-s.p.0nt9ayxdmqydo.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["https://cdn.akamai.steamstatic.com/steam/apps/826930/header.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":0,"slots":{"children":{"name":"lang","param":{"type":"d","key":"en","siblings":null},"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"I0qAYAFL-e2AsAIF3Y-K3"}
