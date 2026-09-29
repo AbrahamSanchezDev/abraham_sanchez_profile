@@ -131,5 +131,7 @@ export function loadProjects(lang: Lang): Project[] {
 
 /** Only list CV files that actually exist in public/, so a missing PDF never becomes a broken link. */
 export function availableCvs(profile: Profile) {
-  return profile.person.cv.filter((c) => fs.existsSync(path.join(PUBLIC_DIR, c.file)));
+  return profile.person.cv
+    .filter((c) => fs.existsSync(path.join(PUBLIC_DIR, c.file)))
+    .map((c) => ({ ...c, file: `${BASE}${c.file}` }));
 }
