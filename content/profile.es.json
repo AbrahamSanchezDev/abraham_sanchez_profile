@@ -45,7 +45,7 @@
     { "id": "projects", "label": "Proyectos", "icon": "Boxes", "blurb": "Demos jugables y código fuente." },
     { "id": "experience", "label": "Experiencia", "icon": "Briefcase", "blurb": "Más de 10 años en juegos, XR y web." },
     { "id": "skills", "label": "Habilidades", "icon": "Cpu", "blurb": "Las tecnologías que uso todos los días." },
-    { "id": "education", "label": "Educación", "icon": "GraduationCap", "blurb": "Títulos e idiomas." },
+    { "id": "education", "label": "Educación", "icon": "GraduationCap", "blurb": "Mis títulos." },
     { "id": "contact", "label": "Contacto", "icon": "Send", "blurb": "Construyamos algo juntos." }
   ],
   "spotlight": {
@@ -202,6 +202,7 @@
     "downloadCv": "Descargar CV",
     "themeSettings": "Ajustes de tema",
     "menu": "Menú",
+    "skipToContent": "Saltar al contenido",
     "email": "Correo",
     "levelSelect": "Selección de nivel",
     "level": "Nivel",

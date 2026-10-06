@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
 }
 
 // Runs before paint so saved theme/nav never flash.
-const themeScript = `try{var t=JSON.parse(localStorage.getItem(${JSON.stringify(STORAGE_KEY)})||"null");if(t)(${applyTheme.toString()})(t)}catch(e){}`;
+const themeScript = `if(location.hash)document.documentElement.dataset.skipIntro="";try{var t=JSON.parse(localStorage.getItem(${JSON.stringify(STORAGE_KEY)})||"null");if(t)(${applyTheme.toString()})(t)}catch(e){}`;
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;

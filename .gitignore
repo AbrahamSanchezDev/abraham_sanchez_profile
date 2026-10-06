@@ -44,3 +44,4 @@ next-env.d.ts
 projects_info/**/*.gif
 projects_info/**/*.png
 projects_info/**/*.jpg
+/.agents

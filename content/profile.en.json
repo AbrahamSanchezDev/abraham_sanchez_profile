@@ -98,7 +98,7 @@
       "id": "education",
       "label": "Education",
       "icon": "GraduationCap",
-      "blurb": "Degrees and languages."
+      "blurb": "My degrees."
     },
     {
       "id": "contact",
@@ -404,6 +404,7 @@
     "downloadCv": "Download CV",
     "themeSettings": "Theme settings",
     "menu": "Menu",
+    "skipToContent": "Skip to content",
     "email": "Email",
     "levelSelect": "Level select",
     "level": "Level",

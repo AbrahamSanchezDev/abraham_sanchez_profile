@@ -4,6 +4,10 @@ import type { Tech } from "../lib/data";
 /** Icons usable from profile.<lang>.json "sections[].icon". Add here when adding a section. */
 export const SECTION_ICONS: Record<string, LucideIcon> = { User, Gamepad2, Boxes, Briefcase, Cpu, GraduationCap, Send };
 
+const btn = "inline-flex items-center gap-2 rounded-theme px-5 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 focus-visible:-translate-y-0.5";
+export const btnPrimary = `${btn} bg-accent text-bg`;
+export const btnGhost = `${btn} border border-line text-heading hover:border-accent hover:text-accent focus-visible:border-accent focus-visible:text-accent`;
+
 export function TechIcon({ tech, size = 16 }: { tech: Tech; size?: number }) {
   if (tech.icon)
     return (
@@ -45,7 +49,7 @@ export function SectionHeader({ level, label, title, kicker }: { level: number; 
         {label} {String(level).padStart(2, "0")}
         {kicker && <span className="text-muted">{"//"} {kicker}</span>}
       </p>
-      <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-heading sm:text-3xl">{title}</h2>
+      <h2 className="text-balance font-display text-2xl font-bold uppercase tracking-wide text-heading sm:text-3xl">{title}</h2>
     </header>
   );
 }

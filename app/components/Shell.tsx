@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Download, Languages, LayoutGrid, Mail, Menu, Palette, X } from "lucide-react";
 import type { Lang, Tech, UI } from "../lib/data";
 import { SECTION_ICONS, TechIcon } from "./ui";
@@ -26,6 +26,7 @@ interface Props {
   headline: string;
   subheadline: string;
   tagline: string;
+  proof: { value: string; label: string }[];
   email: string;
   socials: Social[];
   cvs: { label: string; file: string }[];
@@ -42,10 +43,20 @@ export default function Shell(p: Props) {
   const [themeOpen, setThemeOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Deep links (/#projects) skip the intro.
+  // Deep links (/#projects) skip the intro (layout.tsx hides it before paint; this unmounts it).
   useEffect(() => {
     if (location.hash) setIntroOpen(false); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
+
+  // Stable identity: Intro's focus/scroll-lock effect depends on it and must not re-run on every Shell render.
+  const closeIntro = useCallback(() => setIntroOpen(false), []);
+
+  // Intro opened from the logo: give focus back to it on close, unless the intro already moved focus
+  // somewhere useful (a picked level's heading) or was never opened from the logo.
+  const opener = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!introOpen && document.activeElement === document.body) opener.current?.focus({ preventScroll: true });
+  }, [introOpen]);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -96,7 +107,7 @@ export default function Shell(p: Props) {
   );
 
   const logo = (
-    <button onClick={() => p.showIntro && setIntroOpen(true)} className="flex items-center gap-3 text-left" title={p.showIntro ? p.ui.levelSelect : undefined}>
+    <button onClick={(e) => { if (!p.showIntro) return; opener.current = e.currentTarget; setIntroOpen(true); }} className="flex items-center gap-3 text-left" title={p.showIntro ? p.ui.levelSelect : undefined}>
       <span className="grid h-9 w-9 rotate-45 place-items-center rounded-md border border-accent/60 bg-accent/10 glow">
         <span className="-rotate-45 font-display text-xs font-bold text-accent">{p.initials}</span>
       </span>
@@ -133,8 +144,12 @@ export default function Shell(p: Props) {
 
   return (
     <>
+      <a href="#about" className="fixed left-4 top-4 z-[70] -translate-y-[200%] rounded-theme bg-accent px-4 py-2 text-sm font-semibold text-bg focus:translate-y-0">
+        {p.ui.skipToContent}
+      </a>
+
       {/* Sidebar layout (desktop) */}
-      <aside className="nav-side fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-line bg-surface/80 px-6 py-6 backdrop-blur lg:flex">
+      <aside inert={introOpen} className="nav-side fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-line bg-surface/80 px-6 py-6 backdrop-blur lg:flex">
         {logo}
         <nav className="mt-10 flex flex-col gap-1" aria-label={p.ui.menu}>{links()}</nav>
         <div className="mt-auto space-y-4">
@@ -151,7 +166,7 @@ export default function Shell(p: Props) {
       </aside>
 
       {/* Top bar: always on mobile, and on desktop when nav = top */}
-      <header className="nav-top sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
+      <header inert={introOpen} className="nav-top sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           {logo}
           <nav className="nav-top-links hidden items-center gap-1 lg:flex" aria-label={p.ui.menu}>
@@ -178,10 +193,10 @@ export default function Shell(p: Props) {
         )}
       </header>
 
-      <div className="content">{p.children}</div>
+      <div inert={introOpen} className="content">{p.children}</div>
 
       {introOpen && (
-        <Intro ui={p.ui} name={p.name} headline={p.headline} subheadline={p.subheadline} tagline={p.tagline} sections={p.sections} onClose={() => setIntroOpen(false)} />
+        <Intro ui={p.ui} name={p.name} headline={p.headline} subheadline={p.subheadline} tagline={p.tagline} proof={p.proof} sections={p.sections} email={p.email} cv={p.cvs[0]} onClose={closeIntro} />
       )}
       <ThemePanel ui={p.ui} open={themeOpen} onClose={() => setThemeOpen(false)} defaultTheme={p.defaultTheme} />
     </>

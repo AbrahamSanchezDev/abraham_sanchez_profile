@@ -59,6 +59,16 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  scrollbar-color: var(--line) var(--bg);
+  accent-color: var(--accent);
+}
+
+/* One themed focus ring for every control; in the base layer so utilities (outline-none, outline-accent) still win */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 }
 
 body {
@@ -81,9 +91,17 @@ body {
   background-size: 100% 100%, 48px 48px, 48px 48px;
 }
 
-.glow {
+.glow,
+.glow-hover:focus-visible {
   box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 50%, transparent),
     0 0 24px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+/* Hover only on real pointers, so a tap doesn't leave the glow stuck */
+@media (hover: hover) {
+  .glow-hover:hover {
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 50%, transparent),
+      0 0 24px color-mix(in oklab, var(--accent) 25%, transparent);
+  }
 }
 
 .text-glow {
@@ -91,12 +109,15 @@ body {
 }
 
 /* Panel with accent bar, borrowed from the Iron Paw GDD */
-.panel {
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
+/* In a layer so utilities (hover:border-accent) can override the border */
+@layer components {
+  .panel {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
 }
 .panel-bar::before {
   content: "";
@@ -111,11 +132,14 @@ dialog::backdrop {
   backdrop-filter: blur(4px);
 }
 
+/* Deep links (/en#projects) skip the intro; layout.tsx sets this before paint so it never flashes */
+[data-skip-intro] [data-intro] { display: none; }
+
 @keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }
 }
-.rise { animation: rise 0.6s ease-out both; }
+.rise { animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 [data-motion="off"] *,
 [data-motion="off"] *::before {

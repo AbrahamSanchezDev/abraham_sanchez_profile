@@ -38,7 +38,7 @@ function DemoDialog({ project, onClose, ui }: { project: Project | null; onClose
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2">
             <p className="truncate font-mono text-xs uppercase tracking-widest text-muted">
-              <span className="text-accent">▶ {ui.liveDemo}</span> {"//"} {project.title}
+              <span className="text-accent"><span aria-hidden>▶</span> {ui.liveDemo}</span> {"//"} {project.title}
             </p>
             <div className="flex items-center gap-2">
               <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-muted hover:text-accent">
@@ -93,10 +93,12 @@ function DetailDialog({ project, onClose, onPlay, ui }: { project: Project | nul
             )}
           </div>
           {p.media.length > 1 && (
-            <div className="flex gap-2 border-b border-line p-3">
+            <div className="flex gap-2 border-b border-line px-3">
               {p.media.map((m, i) => (
-                <button key={m} onClick={() => setShown(i)} aria-label={`${ui.preview} ${i + 1}`}
-                  className={`h-2 flex-1 rounded-full transition-colors ${i === shown ? "bg-accent" : "bg-line hover:bg-muted"}`} />
+                // padded button = comfortable tap target around the thin bar
+                <button key={m} onClick={() => setShown(i)} aria-label={`${ui.preview} ${i + 1}`} aria-current={i === shown} className="group/dot flex-1 py-3">
+                  <span className={`block h-2 rounded-full transition-colors ${i === shown ? "bg-accent" : "bg-line group-hover/dot:bg-muted"}`} />
+                </button>
               ))}
             </div>
           )}
@@ -163,29 +165,34 @@ export default function Projects({ projects, ui }: { projects: Project[]; ui: UI
 
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {shown.map((p) => (
-          <article key={p.slug} className="panel group flex flex-col transition-all duration-300 hover:-translate-y-1 hover:border-accent/70 hover:glow">
-            <button onClick={() => setOpen(p)} className="relative block aspect-video overflow-hidden bg-bg text-left" aria-label={p.title}>
+          <article
+            key={p.slug}
+            className="panel glow-hover group relative flex min-h-[28rem] flex-col justify-end transition-all duration-300 hover:-translate-y-1 hover:border-accent/70"
+          >
+            <button onClick={() => setOpen(p)} className="absolute inset-0 block overflow-hidden bg-bg" aria-label={p.title}>
               {p.cover ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={p.cover} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               ) : (
-                <span className="hud-bg grid h-full place-items-center font-display text-3xl font-black text-accent/40">{p.title.slice(0, 2)}</span>
-              )}
-              <span className="absolute left-3 top-3 rounded-full bg-bg/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-accent backdrop-blur">{p.techBadge}</span>
-              {p.demoUrl && p.demoEmbeddable !== false && (
-                <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 font-mono text-[10px] font-bold uppercase text-bg">
-                  <Play size={10} /> {ui.playable}
-                </span>
+                <span className="hud-bg grid h-full place-items-center font-display text-5xl font-black text-accent/40">{p.title.slice(0, 2)}</span>
               )}
             </button>
-            <div className="flex flex-1 flex-col p-5">
-              <h3 className="font-display text-sm font-bold uppercase tracking-wide text-heading">{p.title}</h3>
-              <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted">{p.subtitle}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {p.tech.slice(0, 4).map((t) => <TechChip key={t.name} tech={t} compact />)}
-                {p.tech.length > 4 && <span className="px-1 py-1 text-[11px] text-muted">+{p.tech.length - 4}</span>}
+            <div className="pointer-events-none relative px-5 pb-5 pt-20" style={{ background: "linear-gradient(to top, var(--bg) 62%, transparent)" }}>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-accent">{p.techBadge}</span>
+                {p.demoUrl && p.demoEmbeddable !== false && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2 py-0.5 font-mono text-[11px] font-bold uppercase text-bg">
+                    <Play size={10} /> {ui.playable}
+                  </span>
+                )}
               </div>
-              <div className="mt-5 flex items-center gap-4 border-t border-line pt-4 text-sm">
+              <h3 className="mt-1 font-display text-base font-bold uppercase tracking-wide text-heading">{p.title}</h3>
+              <p className="mt-2 line-clamp-2 text-sm text-text">{p.subtitle}</p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {p.tech.slice(0, 3).map((t) => <TechChip key={t.name} tech={t} compact />)}
+                {p.tech.length > 3 && <span className="px-1 py-1 text-[11px] text-muted">+{p.tech.length - 3}</span>}
+              </div>
+              <div className="pointer-events-auto mt-4 flex items-center gap-4 border-t border-line pt-3 text-sm">
                 <button onClick={() => setOpen(p)} className="font-semibold text-accent hover:underline">{ui.details}</button>
                 {p.demoUrl && p.demoEmbeddable !== false && (
                   <button onClick={() => setDemo(p)} className="inline-flex items-center gap-1 text-muted hover:text-accent"><Play size={14} /> {ui.demo}</button>
