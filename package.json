@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "media": "node scripts/build-media.mjs"
+    "media": "node scripts/build-media.mjs",
+    "cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.16.0",

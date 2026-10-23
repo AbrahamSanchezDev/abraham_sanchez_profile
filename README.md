@@ -18,7 +18,7 @@ The site lives at `/en` and `/es`. `/` redirects based on the browser language (
 |---|---|
 | Name, summary, stats, experience, skills, education, contact, intro on/off, default theme/nav, button labels (`ui`) | `content/profile.en.json` (English) and `content/profile.es.json` (Spanish) — keep both with the same keys; the build fails if the Spanish file is missing one |
 | Projects | one folder per project in `projects_info/<project-slug>/` |
-| CV downloads | drop PDFs in `public/cv/` using the file names listed in `person.cv` (buttons only appear if the file exists) |
+| CV downloads | edit `cv-src/<name>.html` (shared style in `cv-src/cv.css`), then `npm run cv` prints them to `public/cv/<name>.pdf` with headless Chrome. File names must match `person.cv` (buttons only appear if the file exists) |
 
 ### Adding a project
 

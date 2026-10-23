@@ -38,6 +38,8 @@ export interface Project {
   codeSnippet: string;
   cover: string | null;
   media: string[];
+  /** Fully resolved sub-projects (base fields + overrides); the detail dialog pages through them. */
+  variants?: Project[];
 }
 
 // Display name (lowercased) -> simple-icons slug. First regex match wins.
@@ -115,19 +117,25 @@ export function loadProjects(lang: Lang): Project[] {
     .readdirSync(PROJECTS_DIR)
     .filter((slug) => fs.existsSync(path.join(PROJECTS_DIR, slug, "project.json")))
     .map((slug) => {
-      const { techStack = [], ...raw } = {
-        ...readJson(path.join(PROJECTS_DIR, slug, "project.json")),
-        ...(lang === "en" ? {} : readJson(path.join(PROJECTS_DIR, slug, `project.${lang}.json`))),
-      };
+      const en = readJson(path.join(PROJECTS_DIR, slug, "project.json"));
+      const loc = lang === "en" ? {} : readJson(path.join(PROJECTS_DIR, slug, `project.${lang}.json`));
+      const { techStack = [], ...raw } = { ...en, ...loc };
       const mediaDir = path.join(PUBLIC_DIR, "projects", slug);
       const files = fs.existsSync(mediaDir) ? fs.readdirSync(mediaDir).sort() : [];
       const main = files.filter((f) => !f.includes("-poster"));
-      const media = main.map((f) => `${BASE}/projects/${slug}/${f}`);
+      const url = (f: string) => `${BASE}/projects/${slug}/${f}`;
+      const media = main.map(url);
       // Cover = first media item; if it's animated use its still poster so the grid never downloads big files.
       const posterOfFirst = main[0]?.replace(".webp", "-poster.webp");
-      const cover = !main[0] ? null : `${BASE}/projects/${slug}/${files.includes(posterOfFirst) ? posterOfFirst : main[0]}`;
+      const cover = !main[0] ? null : url(files.includes(posterOfFirst) ? posterOfFirst : main[0]);
       const rank = order.indexOf(slug);
-      return { order: rank < 0 ? 99 : rank, tags: [], ...raw, slug, tech: (techStack as string[]).map(tech), cover, media } as Project;
+      const base = { order: rank < 0 ? 99 : rank, tags: [], ...raw, slug, cover };
+      // Optional `variants` (project.json): each overrides base fields; `media` lists its own files. project.<lang>.json overrides by index.
+      const variants = (en.variants as Record<string, unknown>[] | undefined)?.map((v, i) => {
+        const { techStack: ts = techStack, media: m = [], ...rest } = { ...v, ...loc.variants?.[i] };
+        return { ...base, ...rest, tech: (ts as string[]).map(tech), media: (m as string[]).map(url), variants: undefined } as Project;
+      });
+      return { ...base, tech: (techStack as string[]).map(tech), media, variants } as Project;
     })
     .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 }

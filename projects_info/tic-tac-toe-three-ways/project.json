@@ -1,0 +1,80 @@
+{
+  "tags": [
+    "Unity",
+    "Web"
+  ],
+  "title": "Tic-Tac-Toe, Three Ways",
+  "subtitle": "The same game in React (4x4 with AI), React (time-travel history) and Unity — swipe through the three versions.",
+  "techBadge": "React • Unity",
+  "techStack": [
+    "React 18",
+    "JavaScript ES6+",
+    "Unity",
+    "C#",
+    "GitHub Pages"
+  ],
+  "variants": [
+    {
+      "title": "4x4 with AI · React",
+      "media": [
+        "preview-01.webp"
+      ],
+      "subtitle": "Interactive 4x4 Tic-Tac-Toe with AI opponent and responsive design",
+      "techBadge": "React 18",
+      "repoUrl": "https://github.com/AbrahamSanchezDev/react-4x4-tic_tac_toe",
+      "demoUrl": "https://abrahamsanchezdev.github.io/react-4x4-tic_tac_toe/",
+      "challenge": "Implement efficient win detection on a 4x4 board with multiple win conditions (rows, columns, diagonals), and integrate a computer AI that suggests valid moves without requiring complex minimax algorithms for this extended board size.",
+      "architecture": "Component-based React architecture with functional components and hooks for state management; game logic separated into helper functions with constant definitions for player states and game conditions, implementing an event-driven pattern for user interactions.",
+      "techStack": [
+        "React 18",
+        "JavaScript (ES6+)",
+        "CSS3",
+        "GitHub Pages"
+      ],
+      "codeSnippetTitle": "Win Detection Logic",
+      "codeSnippet": "const IsWinner = (gameBoard, currentMove, currentPlayer) => {\n  let boar = [...gameBoard];\n  boar[currentMove] = currentPlayer;\n  const winLines = [[0,1,2,3], [4,5,6,7], /* ... */, [3,6,9,12]];\n  for (let i = 0; i < winLines.length; i++) {\n    const [c1, c2, c3, c4] = winLines[i];\n    if (boar[c1] > 0 && boar[c1] === boar[c2] &&\n        boar[c2] === boar[c3] && boar[c3] === boar[c4]) {\n      return true;\n    }\n  }\n  return false;\n};"
+    },
+    {
+      "title": "Time Travel · React",
+      "media": [
+        "preview-02.webp"
+      ],
+      "subtitle": "Interactive React-based Tic-Tac-Toe with move history and time travel",
+      "techBadge": "React",
+      "repoUrl": "https://github.com/AbrahamSanchezDev/tic-tac-toe_game_with_react",
+      "demoUrl": "https://abrahamsanchezdev.github.io/tic-tac-toe_game_with_react/",
+      "challenge": "Implement game logic that detects winners across multiple board states while maintaining move history for time travel functionality. The challenge involves managing complex state transitions and efficiently tracking game progression without mutations.",
+      "architecture": "Component-driven React architecture with state lifting to Game component. Event-driven board interaction pattern with pure function utilities (calculateWinner) for deterministic game logic. Immutable state updates using array slicing for history management.",
+      "techStack": [
+        "React 18",
+        "React Hooks (useState)",
+        "JavaScript ES6",
+        "Express (proxy)",
+        "Axios"
+      ],
+      "codeSnippetTitle": "Winner Detection and Move History",
+      "codeSnippet": "const [history, setHistory] = useState([Array(9).fill(null)]);\nconst [currentMove, setCurrentMove] = useState(0);\nconst currentSquares = history[currentMove];\n\nfunction handlePlay(nextSquares) {\n  const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];\n  setHistory(nextHistory);\n  setCurrentMove(nextHistory.length - 1);\n}\n\nfunction jumpTo(nextMove) {\n  setCurrentMove(nextMove);\n}"
+    },
+    {
+      "title": "Animated · Unity",
+      "media": [
+        "preview-03.webp"
+      ],
+      "subtitle": "Unity Tic-Tac-Toe with responsive UI and win animations",
+      "techBadge": "Unity 2D",
+      "repoUrl": "https://github.com/AbrahamSanchezDev/Gato",
+      "demoUrl": "https://abrahamsanchezdev.github.io/Gato/",
+      "challenge": "Implemented responsive turn-based logic, win detection, and animated UI feedback in Unity while keeping game state clean and restartable.",
+      "architecture": "Event-driven MonoBehaviour flow with UI button listeners and coroutine-based animation.",
+      "techStack": [
+        "Unity",
+        "C#",
+        "Universal Render Pipeline",
+        "TextMeshPro",
+        "AudioSource"
+      ],
+      "codeSnippetTitle": "Turn handling and win detection",
+      "codeSnippet": "public void OnButtonClick(int index)\n{\n    if (!gameActive) return;\n    buttons[index].GetComponentInChildren<TMP_Text>().text = currentPlayer;\n    buttons[index].interactable = false;\n    movesCount++;\n    CheckWinner();\n    if (gameActive)\n    {\n        currentPlayer = (currentPlayer == \"X\") ? \"O\" : \"X\";\n        UpdateStatusText();\n    }\n}"
+    }
+  ]
+}

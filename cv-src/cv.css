@@ -1,0 +1,41 @@
+/* Shared CV style. Edit the .html files, then `npm run cv` prints them to public/cv/*.pdf via headless Chrome. */
+@page { size: Letter; margin: 0.5in 0.6in; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy: #1f3b5a; --teal: #23798a; --text: #262626; --muted: #6b6b6b; --rule: #23798a; }
+body { font: 9.6pt/1.36 Arial, Helvetica, sans-serif; color: var(--text); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+a { color: inherit; text-decoration: none; }
+
+header { border-bottom: 2px solid var(--navy); padding-bottom: 7pt; }
+h1 { font-size: 27pt; line-height: 1.05; color: var(--navy); letter-spacing: -0.2pt; }
+.title { margin-top: 3pt; font-size: 11.5pt; font-style: italic; color: var(--teal); }
+.contact { display: flex; flex-wrap: wrap; margin-top: 4pt; font-size: 8.8pt; color: var(--muted); }
+.contact span { white-space: nowrap; }
+.contact span + span::before { content: "·"; margin: 0 6pt; color: #b0b0b0; }
+.contact a { color: var(--navy); }
+
+h2 { margin: 11pt 0 5pt; padding-bottom: 2pt; border-bottom: 1.2px solid var(--rule); font-size: 9.6pt; letter-spacing: 0.6pt; text-transform: uppercase; color: var(--navy); }
+p.summary { text-align: left; }
+
+.highlights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; margin-top: 7pt; }
+.highlights div { border-left: 2.5px solid var(--teal); padding: 1pt 0 1pt 6pt; font-size: 8.4pt; color: var(--muted); line-height: 1.25; }
+.highlights b { display: block; font-size: 12pt; color: var(--navy); }
+
+.job { margin-top: 7pt; }
+/* Jobs may split across pages, but never right after the heading or mid-bullet. */
+.job-head, .note { break-after: avoid; }
+li { break-inside: avoid; }
+.job-head { display: flex; align-items: baseline; gap: 6pt; }
+.company { font-weight: bold; font-size: 10.6pt; color: #111; }
+.role { font-style: italic; color: var(--teal); }
+.dates { margin-left: auto; white-space: nowrap; color: var(--muted); font-size: 9pt; }
+.note { margin-top: 1pt; font-size: 8.8pt; font-style: italic; color: var(--muted); }
+ul { margin-top: 2pt; padding-left: 13pt; }
+li { margin-top: 1.2pt; }
+li::marker { color: var(--teal); }
+
+.skills { display: grid; grid-template-columns: max-content 1fr; gap: 2.5pt 10pt; }
+.skills dt { font-weight: bold; color: var(--navy); }
+.edu-line { display: flex; gap: 6pt; align-items: baseline; }
+.edu-line .dates { font-size: 9pt; }
+.lang { margin-top: 6pt; }
+.lang b { color: var(--navy); }

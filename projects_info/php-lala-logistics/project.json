@@ -17,7 +17,5 @@
     "Bootstrap 5",
     "XAMPP",
     "Session Management"
-  ],
-  "codeSnippetTitle": "Session-based Authentication & Prepared Statements",
-  "codeSnippet": "// Secure login with prepared statements to prevent SQL injection\n$stmt = $conn->prepare('SELECT * FROM users WHERE username = ? AND password = ?');\n$stmt->bind_param('ss', $username, $password);\n$stmt->execute();\n$result = $stmt->get_result();\nif ($result->num_rows > 0) {\n    $user = $result->fetch_assoc();\n    $_SESSION['username'] = $user['username'];\n    header('Location: php/menu.php');\n} else {\n    $_SESSION['error_message'] = 'Invalid credentials';\n    header('Location: index.php');\n}\n$stmt->close();\n$conn->close();"
+  ]
 }

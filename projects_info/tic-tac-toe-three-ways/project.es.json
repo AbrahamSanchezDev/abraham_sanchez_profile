@@ -1,0 +1,27 @@
+{
+  "title": "Gato, de tres formas",
+  "subtitle": "El mismo juego en React (4x4 con IA), React (historial con viaje en el tiempo) y Unity — desliza entre las tres versiones.",
+  "variants": [
+    {
+      "title": "4x4 con IA · React",
+      "subtitle": "Gato 4x4 interactivo con oponente de IA y diseño responsivo",
+      "challenge": "Implementar una detección eficiente de ganador en un tablero 4x4 con múltiples condiciones de victoria (filas, columnas, diagonales) e integrar una IA que sugiere movimientos válidos sin necesitar algoritmos minimax complejos para este tamaño de tablero.",
+      "architecture": "Arquitectura de componentes funcionales en React con hooks para el estado; la lógica del juego está separada en funciones auxiliares con constantes para jugadores y condiciones de juego, usando un patrón orientado a eventos para las interacciones.",
+      "codeSnippetTitle": "Lógica de detección de ganador"
+    },
+    {
+      "title": "Viaje en el tiempo · React",
+      "subtitle": "Gato interactivo en React con historial de movimientos y viaje en el tiempo",
+      "challenge": "Implementar la lógica que detecta al ganador en múltiples estados del tablero mientras se mantiene el historial de movimientos para poder viajar en el tiempo. El reto está en manejar transiciones de estado complejas y registrar la partida sin mutaciones.",
+      "architecture": "Arquitectura de componentes en React con el estado elevado al componente Game. Interacción del tablero basada en eventos con funciones puras (calculateWinner) para una lógica determinista. Actualizaciones inmutables con slicing de arreglos para el historial.",
+      "codeSnippetTitle": "Detección de ganador e historial de movimientos"
+    },
+    {
+      "title": "Animado · Unity",
+      "subtitle": "Gato en Unity con UI responsiva y animaciones de victoria",
+      "challenge": "Implementé lógica por turnos responsiva, detección de ganador y retroalimentación animada en la UI de Unity, manteniendo el estado del juego limpio y reiniciable.",
+      "architecture": "Flujo de MonoBehaviour orientado a eventos con listeners en los botones de UI y animaciones con corrutinas.",
+      "codeSnippetTitle": "Manejo de turnos y detección de ganador"
+    }
+  ]
+}

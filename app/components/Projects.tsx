@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Code2, ExternalLink, ImageOff, Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Code2, ExternalLink, ImageOff, Play, X } from "lucide-react";
 import type { Project, UI } from "../lib/data";
 import { TechChip } from "./ui";
 
@@ -77,27 +77,60 @@ function DemoButton({ project, onPlay, ui }: { project: Project; onPlay: (p: Pro
 }
 
 function DetailDialog({ project, onClose, onPlay, ui }: { project: Project | null; onClose: () => void; onPlay: (p: Project) => void; ui: UI }) {
-  const [shown, setShown] = useState(0);
-  const p = project;
+  // With variants the arrows/swipe page through them (each has its own text, links and media); otherwise through the media.
+  const [idx, setIdx] = useState(0);
+  const variants = project?.variants;
+  const p = variants?.[idx] ?? project;
+  const count = variants ? variants.length : (p?.media.length ?? 0);
+  const go = (d: number) => setIdx((i) => (i + d + count) % count);
+  const swipeX = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!project || count < 2) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") setIdx((i) => (i + count - 1) % count);
+      else if (e.key === "ArrowRight") setIdx((i) => (i + 1) % count);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [project, count]);
+
+  const img = variants ? p?.media[0] : p?.media[idx];
+  const arrow = "absolute top-1/2 z-10 -translate-y-1/2 rounded-theme bg-bg/70 p-2 text-muted backdrop-blur hover:text-heading";
   return (
     <Modal open={!!p} onClose={onClose} label={p?.title ?? "Project"} className="max-w-4xl">
       {p && (
         <div className="max-h-[92dvh] overflow-y-auto">
-          <div className="relative bg-black">
+          <div
+            className="relative touch-pan-y bg-black"
+            onPointerDown={(e) => { swipeX.current = e.clientX; }}
+            onPointerUp={(e) => {
+              const dx = e.clientX - (swipeX.current ?? e.clientX);
+              swipeX.current = null;
+              if (count > 1 && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+            }}
+          >
             <div className="absolute right-3 top-3 z-10"><CloseBtn onClick={onClose} label={ui.close} /></div>
-            {p.media.length ? (
+            {img ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={p.media[shown]} alt={`${p.title} — ${ui.preview} ${shown + 1}`} className="mx-auto max-h-[55dvh] w-full object-contain" />
+              <img src={img} alt={`${p.title} — ${ui.preview} ${idx + 1}`} draggable={false} className="mx-auto max-h-[55dvh] w-full select-none object-contain" />
             ) : (
               <div className="grid h-40 place-items-center text-muted"><ImageOff /></div>
             )}
+            {count > 1 && (
+              <>
+                <button onClick={() => go(-1)} aria-label={ui.previous} className={`${arrow} left-3`}><ChevronLeft size={20} /></button>
+                <button onClick={() => go(1)} aria-label={ui.next} className={`${arrow} right-3`}><ChevronRight size={20} /></button>
+                <span className="absolute left-3 top-3 rounded-theme bg-bg/70 px-2 py-1 font-mono text-xs text-muted backdrop-blur">{idx + 1} / {count}</span>
+              </>
+            )}
           </div>
-          {p.media.length > 1 && (
+          {count > 1 && (
             <div className="flex gap-2 border-b border-line px-3">
-              {p.media.map((m, i) => (
+              {Array.from({ length: count }, (_, i) => (
                 // padded button = comfortable tap target around the thin bar
-                <button key={m} onClick={() => setShown(i)} aria-label={`${ui.preview} ${i + 1}`} aria-current={i === shown} className="group/dot flex-1 py-3">
-                  <span className={`block h-2 rounded-full transition-colors ${i === shown ? "bg-accent" : "bg-line group-hover/dot:bg-muted"}`} />
+                <button key={i} onClick={() => setIdx(i)} aria-label={variants?.[i].title ?? `${ui.preview} ${i + 1}`} aria-current={i === idx} className="group/dot flex-1 py-3">
+                  <span className={`block h-2 rounded-full transition-colors ${i === idx ? "bg-accent" : "bg-line group-hover/dot:bg-muted"}`} />
                 </button>
               ))}
             </div>
@@ -145,6 +178,7 @@ export default function Projects({ projects, ui }: { projects: Project[]; ui: UI
   const [filter, setFilter] = useState("All");
   const [open, setOpen] = useState<Project | null>(null);
   const [demo, setDemo] = useState<Project | null>(null);
+  const canPlay = (p: Project) => [p, ...(p.variants ?? [])].some((x) => x.demoUrl && x.demoEmbeddable !== false);
   const shown = filter === "All" ? projects : projects.filter((p) => p.tags.includes(filter));
 
   return (
@@ -180,7 +214,7 @@ export default function Projects({ projects, ui }: { projects: Project[]; ui: UI
             <div className="pointer-events-none relative px-5 pb-5 pt-20" style={{ background: "linear-gradient(to top, var(--bg) 62%, transparent)" }}>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-accent">{p.techBadge}</span>
-                {p.demoUrl && p.demoEmbeddable !== false && (
+                {canPlay(p) && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2 py-0.5 font-mono text-[11px] font-bold uppercase text-bg">
                     <Play size={10} /> {ui.playable}
                   </span>
@@ -209,7 +243,7 @@ export default function Projects({ projects, ui }: { projects: Project[]; ui: UI
       </div>
 
       <DetailDialog ui={ui} key={open?.slug} project={open} onClose={() => setOpen(null)} onPlay={(p) => { setOpen(null); setDemo(p); }} />
-      <DemoDialog ui={ui} key={demo?.slug} project={demo} onClose={() => setDemo(null)} />
+      <DemoDialog ui={ui} key={demo?.demoUrl} project={demo} onClose={() => setDemo(null)} />
     </>
   );
 }

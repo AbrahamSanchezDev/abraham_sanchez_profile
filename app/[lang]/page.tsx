@@ -53,7 +53,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <span className="text-heading">{person.headline}</span> <span className="text-accent">{"//"}</span> {person.subheadline}
             </p>
             <p className="rise mt-6 max-w-2xl text-pretty text-lg text-text" style={{ animationDelay: "180ms" }}>{person.summary}</p>
-            <div className="rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
+            <div className="rise relative z-10 mt-8 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
               <a href="#projects" className={btnPrimary}>{ui.viewProjects} <ArrowRight size={16} /></a>
               <CvMenu cvs={cvs} label={ui.downloadCv} className={btnGhost} />
               <a href="#contact" className={btnGhost}><Mail size={16} /> {ui.contact}</a>

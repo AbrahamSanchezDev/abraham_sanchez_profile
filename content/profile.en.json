@@ -8,7 +8,7 @@
     "name": "Abraham Sanchez",
     "initials": "AS",
     "headline": "Senior Software Engineer",
-    "subheadline": "Unity · XR · Full-Stack Web",
+    "subheadline": "Unity · XR · Client Systems & Tooling",
     "tagline": "I build games, XR experiences and the tools behind them — from first prototype to live operations.",
     "summary": "Senior engineer with 10+ years shipping commercial products across PC, mobile (iOS/Android), WebGL and XR. I've shipped two games on Steam, raised player retention on a high-traffic F2P mobile title, led an XR team whose iOS AR app was nominated for the Unity Awards, and automated pipelines that saved tens of thousands in production costs. I care about clean, modular architecture, measurable performance and code that the next developer can pick up fast.",
     "location": "Salamanca, Gto, Mexico",
@@ -132,14 +132,14 @@
   "experience": [
     {
       "company": "Alter Learning",
-      "role": "Senior Unity Developer (Contract)",
+      "role": "Senior Software Engineer – Unity & XR (Contract)",
       "period": "Nov 2025 – Feb 2026",
-      "summary": "Reusable frameworks and XR integration for learning apps.",
+      "summary": "Reusable frameworks and VR integration for a 20+ app learning ecosystem.",
       "highlights": [
-        "Designed reusable Unity frameworks using SOLID, MVC and event-driven systems with data-driven ScriptableObjects.",
-        "Built modular XR / AR Foundation integration systems that turned screen-based apps into VR-ready cross-platform builds.",
-        "Defined development standards and documentation practices that sped up onboarding.",
-        "Optimized core systems for runtime stability, memory and rendering performance."
+        "Engineered a reusable VR integration framework that cut VR porting time by 40%+ across a 20+ app ecosystem.",
+        "Refactored core systems around SOLID and modular ScriptableObjects, reducing recurring defect reports by ~35%.",
+        "Defined development standards and documentation that cut new-developer onboarding by ~30%.",
+        "Optimized memory and performance across mobile, desktop and standalone VR (Meta Quest 3)."
       ],
       "tech": [
         "Unity",
@@ -150,7 +150,7 @@
     },
     {
       "company": "Scopely",
-      "role": "Senior Unity Developer",
+      "role": "Senior Software Engineer – Unity Client",
       "period": "Jun 2024 – Aug 2025",
       "summary": "Features and tooling for WWE Champions, a high-traffic F2P mobile game.",
       "highlights": [
@@ -169,7 +169,7 @@
     },
     {
       "company": "Amber Studio",
-      "role": "Senior Unity Developer (Contract)",
+      "role": "Senior Software Engineer – Unity (Contract)",
       "period": "Jan 2024 – May 2024",
       "summary": "Gameplay systems for F2P casino titles on mobile and web.",
       "highlights": [
@@ -188,42 +188,27 @@
     },
     {
       "company": "PeakActivity",
-      "role": "Senior Unity Developer · Development Team Lead",
-      "period": "Oct 2022 – Jan 2024",
-      "summary": "Led AR/VR delivery across Quest, Magic Leap, visionOS and WebGL.",
+      "role": "Software Engineer → Senior Software Engineer – Unity, Team Lead",
+      "period": "Jul 2020 – Dec 2023",
+      "summary": "Subcontracted through Siono, then contracted directly by PeakActivity in Oct 2022 and promoted to team lead. AR/VR delivery across Quest, Magic Leap, visionOS and WebGL.",
       "highlights": [
         "Led Unity development of AR/VR applications for Quest, Magic Leap, visionOS and WebGL.",
-        "Integrated the ArcGIS Maps SDK for real-time geospatial VR visualization.",
-        "Built an iOS LiDAR scanning system that captures and renders point-cloud data.",
-        "Architected cloud integrations connecting Unity clients to backend microservices via REST APIs."
-      ],
-      "tech": [
-        "Unity",
-        "C#",
-        "Meta Quest",
-        "Magic Leap",
-        "visionOS",
-        "WebGL",
-        "ArcGIS"
-      ]
-    },
-    {
-      "company": "Siono (contracted to PeakActivity)",
-      "role": "Unity Developer",
-      "period": "Jul 2020 – Sep 2022",
-      "summary": "AR, WebGL and VR training apps for enterprise clients.",
-      "highlights": [
         "Built an iOS AR app nominated for the Unity Awards 2021, helping secure a partnership with Unity and Magic Leap.",
         "Developed a Magic Leap 2 AR experience showcased at AWE.",
-        "Delivered a WebGL virtual-assistant framework for holographic installations.",
-        "Built interactive simulations and immersive VR training environments."
+        "Integrated the ArcGIS Maps SDK for real-time geospatial VR visualization.",
+        "Built an iOS LiDAR scanning system that captures and renders point-cloud data.",
+        "Architected cloud integrations connecting Unity clients to backend microservices via REST APIs.",
+        "Delivered a WebGL virtual-assistant framework for holographic installations."
       ],
       "tech": [
         "Unity",
         "C#",
         "AR Foundation",
+        "Meta Quest",
         "Magic Leap",
-        "WebGL"
+        "visionOS",
+        "WebGL",
+        "ArcGIS"
       ]
     },
     {
@@ -246,12 +231,12 @@
     },
     {
       "company": "Code Bullet",
-      "role": "Lead Unity Programmer",
+      "role": "Lead Programmer – Unity",
       "period": "Jan 2017 – Feb 2018",
       "summary": "Turned a prototype into Landless, a survival game on Steam.",
       "highlights": [
         "Transformed a prototype into Landless, an open-world survival game released on Steam; led a team of 4.",
-        "Automated the asset pipeline, saving over $50K in production costs.",
+        "Designed a procedural asset-configuration system that automated the asset pipeline, saving over $50K in production costs.",
         "Contributed design changes that helped drive first-year sales above $100K.",
         "Built behavior-tree AI and procedural open-world spawning."
       ],
@@ -262,10 +247,25 @@
       ]
     },
     {
+      "company": "Independent Development",
+      "role": "Software Developer – Unity",
+      "period": "Feb 2015 – Dec 2016",
+      "summary": "Self-directed Unity work alongside a non-games job.",
+      "highlights": [
+        "Prototyped a real-time 3D combat RPG: abilities, progression, NPC AI and object pooling.",
+        "Built an import pipeline and prefab standards for my own 3D assets (Blender, Maya, ZBrush)."
+      ],
+      "tech": [
+        "Unity",
+        "C#",
+        "Blender"
+      ]
+    },
+    {
       "company": "Stoneworks Games",
       "role": "3D Artist & Junior Unity Developer (Freelance)",
       "period": "Feb 2013 – Jan 2015",
-      "summary": "Procedural content tools and 3D art.",
+      "summary": "Procedural content tools and 3D art for Blood of Magic (PC, 2015).",
       "highlights": [
         "Built a procedural asset-combination system that scaled 40 assets into 4,800+ unique variations.",
         "Developed an NPC generator that automated 80%+ of NPC creation in the final game.",
@@ -326,8 +326,7 @@
         "Vercel",
         "MongoDB",
         "SQL Server",
-        "MySQL",
-        "WhatsApp"
+        "MySQL"
       ]
     },
     {
@@ -337,7 +336,6 @@
         "GitHub",
         "Bitbucket",
         "Jira",
-        "Trello",
         "Jenkins",
         "Postman",
         "BugSnag"
@@ -350,9 +348,7 @@
         "Cursor",
         "Claude",
         "ChatGPT",
-        "Gemini",
-        "DeepSeek",
-        "Ollama"
+        "Gemini"
       ]
     },
     {
@@ -360,9 +356,7 @@
       "items": [
         "Blender",
         "Maya",
-        "ZBrush",
-        "Substance Painter",
-        "Photoshop"
+        "Substance Painter"
       ]
     },
     {
@@ -432,6 +426,8 @@
     "animationsSub": "Transitions and entrance effects.",
     "reset": "Reset to default",
     "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
     "liveDemo": "Live demo",
     "newTab": "New tab",
     "loadingBuild": "Loading build…",

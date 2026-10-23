@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ChevronRight, Download, LayoutGrid, Mail } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronRight, LayoutGrid, Mail } from "lucide-react";
 import type { UI } from "../lib/data";
 import type { Section } from "./Shell";
+import CvMenu from "./CvMenu";
 import { btnGhost, btnPrimary, SECTION_ICONS } from "./ui";
 
 interface Props {
@@ -14,14 +15,39 @@ interface Props {
   proof: { value: string; label: string }[];
   sections: Section[];
   email: string;
-  cv?: { label: string; file: string };
+  cvs: { label: string; file: string }[];
   ui: UI;
   onClose: () => void;
 }
 
+/** Seconds before an untouched intro opens the main page on its own. */
+const AUTO_MS = 12000;
+
 /** Full-screen "level select" landing. Enabled with site.showIntro in content/profile.<lang>.json. */
-export default function Intro({ name, headline, subheadline, tagline, proof, sections, email, cv, ui, onClose }: Props) {
+export default function Intro({ name, headline, subheadline, tagline, proof, sections, email, cvs, ui, onClose }: Props) {
   const root = useRef<HTMLDivElement>(null);
+  const [auto, setAuto] = useState(true);
+
+  // Untouched intro -> open the main page after AUTO_MS. Any press/scroll/key cancels it (the reader is exploring).
+  // Progress is driven from JS (not CSS animation) so it still fills when reduced-motion / "motion off" disable CSS animations.
+  const bar = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!auto) return;
+    const start = performance.now();
+    let raf = requestAnimationFrame(function tick(now) {
+      const pct = Math.min(1, (now - start) / AUTO_MS);
+      if (bar.current) bar.current.style.transform = `scaleX(${pct})`;
+      if (pct >= 1) onClose();
+      else raf = requestAnimationFrame(tick);
+    });
+    const stop = () => setAuto(false);
+    const evs = ["pointerdown", "keydown", "wheel", "touchmove"] as const;
+    evs.forEach((e) => addEventListener(e, stop, { once: true }));
+    return () => {
+      cancelAnimationFrame(raf);
+      evs.forEach((e) => removeEventListener(e, stop));
+    };
+  }, [auto, onClose]);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -63,6 +89,11 @@ export default function Intro({ name, headline, subheadline, tagline, proof, sec
       aria-label={ui.levelSelect}
       className="hud-bg fixed inset-0 z-[60] overflow-y-auto bg-bg outline-none"
     >
+      {auto && (
+        <div aria-hidden className="fixed inset-x-0 top-0 z-10 h-1 bg-line">
+          <div ref={bar} className="h-full origin-left scale-x-0 bg-accent" />
+        </div>
+      )}
       <div className="mx-auto flex min-h-full max-w-5xl flex-col justify-center px-4 py-12 sm:px-6">
         <p className="rise mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent sm:tracking-[0.35em]">
           <span className="h-px w-8 shrink-0 bg-accent" /> {ui.playerProfile} {"//"} {subheadline}
@@ -81,9 +112,9 @@ export default function Intro({ name, headline, subheadline, tagline, proof, sec
           ))}
         </dl>
 
-        <div className="rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "300ms" }}>
-          {cv && <a href={cv.file} download className={btnPrimary}><Download size={16} /> {ui.downloadCv}</a>}
-          <button onClick={onClose} className={cv ? btnGhost : btnPrimary}>{ui.pressStart} <ChevronRight size={16} /></button>
+        <div className="rise relative z-10 mt-8 flex flex-wrap gap-3" style={{ animationDelay: "300ms" }}>
+          <CvMenu cvs={cvs} label={ui.downloadCv} className={btnPrimary} />
+          <button onClick={onClose} className={cvs.length ? btnGhost : btnPrimary}>{ui.pressStart} <ChevronRight size={16} /></button>
           <a href={`mailto:${email}`} className={btnGhost}><Mail size={16} /> {ui.email}</a>
         </div>
 
@@ -98,7 +129,7 @@ export default function Intro({ name, headline, subheadline, tagline, proof, sec
                 key={s.id}
                 onClick={() => go(s.id)}
                 // ponytail: last card spans the leftover cell(s); assumes 7 sections, revisit if the count changes
-                className="rise panel glow-hover group p-4 text-left last:sm:col-span-2 transition-all hover:-translate-y-1 hover:border-accent focus-visible:-translate-y-1 focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="rise panel glow-hover group flex flex-col justify-start p-4 text-left last:sm:col-span-2 transition-all hover:-translate-y-1 hover:border-accent focus-visible:-translate-y-1 focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 style={{ animationDelay: `${280 + i * 35}ms` }}
               >
                 <span className="flex items-center justify-between">

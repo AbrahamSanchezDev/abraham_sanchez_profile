@@ -8,7 +8,7 @@
     "name": "Abraham Sanchez",
     "initials": "AS",
     "headline": "Ingeniero de Software Senior",
-    "subheadline": "Unity · XR · Web Full-Stack",
+    "subheadline": "Unity · XR · Sistemas Cliente y Herramientas",
     "tagline": "Creo videojuegos, experiencias XR y las herramientas detrás de ellos — desde el primer prototipo hasta las operaciones en vivo.",
     "summary": "Ingeniero senior con más de 10 años lanzando productos comerciales en PC, móvil (iOS/Android), WebGL y XR. He publicado dos juegos en Steam, aumenté la retención de jugadores en un título móvil F2P de alto tráfico, lideré un equipo XR cuya app de AR para iOS fue nominada a los Unity Awards y automaticé pipelines que ahorraron decenas de miles en costos de producción. Me importa la arquitectura limpia y modular, el rendimiento medible y el código que el siguiente desarrollador pueda entender rápido.",
     "location": "Salamanca, Gto, México",
@@ -66,20 +66,20 @@
   "experience": [
     {
       "company": "Alter Learning",
-      "role": "Desarrollador Unity Senior (Contrato)",
+      "role": "Ingeniero de Software Senior – Unity y XR (Contrato)",
       "period": "Nov 2025 – Feb 2026",
-      "summary": "Frameworks reutilizables e integración XR para apps educativas.",
+      "summary": "Frameworks reutilizables e integración VR para un ecosistema de más de 20 apps educativas.",
       "highlights": [
-        "Diseñé frameworks reutilizables en Unity con SOLID, MVC y sistemas orientados a eventos con ScriptableObjects basados en datos.",
-        "Construí sistemas modulares de integración XR / AR Foundation que convirtieron apps de pantalla en builds multiplataforma listos para VR.",
-        "Definí estándares de desarrollo y documentación que agilizaron el onboarding.",
-        "Optimicé sistemas centrales en estabilidad, memoria y rendimiento de renderizado."
+        "Desarrollé un framework reutilizable de integración VR que redujo más de 40% el tiempo de portar apps a VR en un ecosistema de más de 20 apps.",
+        "Refactoricé sistemas centrales con SOLID y ScriptableObjects modulares, reduciendo ~35% los reportes de defectos recurrentes.",
+        "Definí estándares de desarrollo y documentación que redujeron ~30% el onboarding de nuevos desarrolladores.",
+        "Optimicé memoria y rendimiento en móvil, escritorio y VR standalone (Meta Quest 3)."
       ],
       "tech": ["Unity", "C#", "AR Foundation", "Meta Quest"]
     },
     {
       "company": "Scopely",
-      "role": "Desarrollador Unity Senior",
+      "role": "Ingeniero de Software Senior – Cliente Unity",
       "period": "Jun 2024 – Ago 2025",
       "summary": "Features y herramientas para WWE Champions, un juego móvil F2P de alto tráfico.",
       "highlights": [
@@ -92,7 +92,7 @@
     },
     {
       "company": "Amber Studio",
-      "role": "Desarrollador Unity Senior (Contrato)",
+      "role": "Ingeniero de Software Senior – Unity (Contrato)",
       "period": "Ene 2024 – May 2024",
       "summary": "Sistemas de gameplay para juegos de casino F2P en móvil y web.",
       "highlights": [
@@ -105,29 +105,19 @@
     },
     {
       "company": "PeakActivity",
-      "role": "Desarrollador Unity Senior · Líder de Equipo de Desarrollo",
-      "period": "Oct 2022 – Ene 2024",
-      "summary": "Lideré entregas AR/VR en Quest, Magic Leap, visionOS y WebGL.",
+      "role": "Ingeniero de Software → Ingeniero de Software Senior – Unity, Líder de Equipo",
+      "period": "Jul 2020 – Dic 2023",
+      "summary": "Subcontratado a través de Siono; en oct 2022 PeakActivity me contrató directamente como contratista y me promovió a líder de equipo. Entregas AR/VR en Quest, Magic Leap, visionOS y WebGL.",
       "highlights": [
         "Lideré el desarrollo en Unity de aplicaciones AR/VR para Quest, Magic Leap, visionOS y WebGL.",
-        "Integré ArcGIS Maps SDK para visualización geoespacial en VR en tiempo real.",
-        "Construí un sistema de escaneo LiDAR en iOS que captura y renderiza nubes de puntos.",
-        "Diseñé integraciones en la nube que conectan clientes Unity con microservicios backend mediante REST APIs."
-      ],
-      "tech": ["Unity", "C#", "Meta Quest", "Magic Leap", "visionOS", "WebGL", "ArcGIS"]
-    },
-    {
-      "company": "Siono (contratado para PeakActivity)",
-      "role": "Desarrollador Unity",
-      "period": "Jul 2020 – Sep 2022",
-      "summary": "Apps de AR, WebGL y capacitación en VR para clientes empresariales.",
-      "highlights": [
         "Creé una app de AR para iOS nominada a los Unity Awards 2021, que ayudó a asegurar una alianza con Unity y Magic Leap.",
         "Desarrollé una experiencia AR en Magic Leap 2 presentada en AWE.",
-        "Entregué un framework de asistente virtual en WebGL para instalaciones holográficas.",
-        "Construí simulaciones interactivas y entornos inmersivos de capacitación en VR."
+        "Integré ArcGIS Maps SDK para visualización geoespacial en VR en tiempo real.",
+        "Construí un sistema de escaneo LiDAR en iOS que captura y renderiza nubes de puntos.",
+        "Diseñé integraciones en la nube que conectan clientes Unity con microservicios backend mediante REST APIs.",
+        "Entregué un framework de asistente virtual en WebGL para instalaciones holográficas."
       ],
-      "tech": ["Unity", "C#", "AR Foundation", "Magic Leap", "WebGL"]
+      "tech": ["Unity", "C#", "AR Foundation", "Meta Quest", "Magic Leap", "visionOS", "WebGL", "ArcGIS"]
     },
     {
       "company": "The Capture Worlds",
@@ -144,22 +134,33 @@
     },
     {
       "company": "Code Bullet",
-      "role": "Programador Unity Principal",
+      "role": "Programador Principal – Unity",
       "period": "Ene 2017 – Feb 2018",
       "summary": "Convertí un prototipo en Landless, un juego de supervivencia en Steam.",
       "highlights": [
         "Transformé un prototipo en Landless, un juego de supervivencia de mundo abierto publicado en Steam; dirigí un equipo de 4 personas.",
-        "Automaticé el pipeline de assets, ahorrando más de $50K en costos de producción.",
+        "Diseñé un sistema procedural de configuración de assets que automatizó el pipeline, ahorrando más de $50K en costos de producción.",
         "Contribuí con cambios de diseño que ayudaron a superar $100K en ventas el primer año.",
         "Construí IA con behavior trees y aparición procedural en mundo abierto."
       ],
       "tech": ["Unity", "C#", "Steam"]
     },
     {
+      "company": "Desarrollo Independiente",
+      "role": "Desarrollador de Software – Unity",
+      "period": "Feb 2015 – Dic 2016",
+      "summary": "Desarrollo independiente en Unity mientras trabajaba fuera de la industria de videojuegos.",
+      "highlights": [
+        "Prototipé un RPG de combate 3D en tiempo real: habilidades, progresión, IA de NPCs y object pooling.",
+        "Construí un pipeline de importación y estándares de prefabs para mis propios assets 3D (Blender, Maya, ZBrush)."
+      ],
+      "tech": ["Unity", "C#", "Blender"]
+    },
+    {
       "company": "Stoneworks Games",
       "role": "Artista 3D y Desarrollador Unity Junior (Freelance)",
       "period": "Feb 2013 – Ene 2015",
-      "summary": "Herramientas de contenido procedural y arte 3D.",
+      "summary": "Herramientas de contenido procedural y arte 3D para Blood of Magic (PC, 2015).",
       "highlights": [
         "Construí un sistema procedural de combinación de assets que convirtió 40 assets en más de 4,800 variaciones únicas.",
         "Desarrollé un generador de NPCs que automatizó más del 80% de su creación en el juego final.",
@@ -172,10 +173,10 @@
     { "title": "Lenguajes", "items": ["C#", "TypeScript", "JavaScript", "SQL", "HTML", "CSS", "PHP"] },
     { "title": "Motor y XR", "items": ["Unity", "AR Foundation", "Meta Quest", "Magic Leap", "visionOS", "WebGL", "Steam"] },
     { "title": "Web y Móvil", "items": ["React", "Next.js", "Node.js", "Angular", "Ionic", "Android", "iOS", "Tailwind CSS"] },
-    { "title": "Nube y Datos", "items": ["AWS S3", "Firebase", "Supabase", "Vercel", "MongoDB", "SQL Server", "MySQL", "WhatsApp"] },
-    { "title": "Herramientas y DevOps", "items": ["Git", "GitHub", "Bitbucket", "Jira", "Trello", "Jenkins", "Postman", "BugSnag"] },
-    { "title": "Desarrollo asistido por IA", "items": ["GitHub Copilot", "Cursor", "Claude", "ChatGPT", "Gemini", "DeepSeek", "Ollama"] },
-    { "title": "Pipeline 3D", "items": ["Blender", "Maya", "ZBrush", "Substance Painter", "Photoshop"] },
+    { "title": "Nube y Datos", "items": ["AWS S3", "Firebase", "Supabase", "Vercel", "MongoDB", "SQL Server", "MySQL"] },
+    { "title": "Herramientas y DevOps", "items": ["Git", "GitHub", "Bitbucket", "Jira", "Jenkins", "Postman", "BugSnag"] },
+    { "title": "Desarrollo asistido por IA", "items": ["GitHub Copilot", "Cursor", "Claude", "ChatGPT", "Gemini"] },
+    { "title": "Pipeline 3D", "items": ["Blender", "Maya", "Substance Painter"] },
     {
       "title": "Arquitectura y Sistemas",
       "concepts": true,
@@ -230,6 +231,8 @@
     "animationsSub": "Transiciones y efectos de entrada.",
     "reset": "Restablecer",
     "close": "Cerrar",
+    "previous": "Anterior",
+    "next": "Siguiente",
     "liveDemo": "Demo en vivo",
     "newTab": "Nueva pestaña",
     "loadingBuild": "Cargando build…",

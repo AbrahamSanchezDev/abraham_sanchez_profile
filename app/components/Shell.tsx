@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Download, Languages, LayoutGrid, Mail, Menu, Palette, X } from "lucide-react";
+import { Languages, LayoutGrid, Mail, Menu, Palette, X } from "lucide-react";
 import type { Lang, Tech, UI } from "../lib/data";
 import { SECTION_ICONS, TechIcon } from "./ui";
+import CvMenu from "./CvMenu";
 import Intro from "./Intro";
 import ThemePanel from "./ThemePanel";
 
@@ -153,11 +154,7 @@ export default function Shell(p: Props) {
         {logo}
         <nav className="mt-10 flex flex-col gap-1" aria-label={p.ui.menu}>{links()}</nav>
         <div className="mt-auto space-y-4">
-          {p.cvs[0] && (
-            <a href={p.cvs[0].file} download className="flex items-center justify-center gap-2 rounded-theme border border-accent/60 px-3 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent/10">
-              <Download size={16} /> {p.ui.downloadCv}
-            </a>
-          )}
+          <CvMenu up cvs={p.cvs} label={p.ui.downloadCv} className="flex w-full items-center justify-center gap-2 rounded-theme border border-accent/60 px-3 py-2 text-sm font-semibold text-accent transition-colors hover:bg-accent/10" />
           <div className="flex flex-wrap items-center justify-between gap-y-1 border-t border-line pt-4">
             {socials}
             <div className="flex">{themeBtn}</div>
@@ -196,7 +193,7 @@ export default function Shell(p: Props) {
       <div inert={introOpen} className="content">{p.children}</div>
 
       {introOpen && (
-        <Intro ui={p.ui} name={p.name} headline={p.headline} subheadline={p.subheadline} tagline={p.tagline} proof={p.proof} sections={p.sections} email={p.email} cv={p.cvs[0]} onClose={closeIntro} />
+        <Intro ui={p.ui} name={p.name} headline={p.headline} subheadline={p.subheadline} tagline={p.tagline} proof={p.proof} sections={p.sections} email={p.email} cvs={p.cvs} onClose={closeIntro} />
       )}
       <ThemePanel ui={p.ui} open={themeOpen} onClose={() => setThemeOpen(false)} defaultTheme={p.defaultTheme} />
     </>
