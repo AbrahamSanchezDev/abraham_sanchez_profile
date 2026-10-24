@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-10-06T21:24:28.343Z",
+        "reason": "Assistant judgment, not user confirmed: .panel-bar 3px accent stripe is a documented motif in DESIGN.md (Shapes) that predates this session"
+      }
+    ]
+  }
+}

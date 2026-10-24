@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T00:00:00Z",
+  "title": "Design System: Abraham Sanchez Profile",
+  "extensions": {
+    "colorMeta": {
+      "accent-cyan": { "role": "primary", "displayName": "Electric Cyan", "canonical": "#00e5ff", "tonalRamp": ["#003640", "#00606e", "#008a9e", "#00b4cc", "#00e5ff", "#66efff", "#a3f5ff", "#d6fbff"] },
+      "accent-lime": { "role": "secondary", "displayName": "Signal Lime", "canonical": "#7fff4f", "tonalRamp": ["#1a4a05", "#2f7a0f", "#4aae24", "#66dd3a", "#7fff4f", "#a3ff82", "#c5ffb0", "#e6ffd9"] },
+      "bg-void": { "role": "neutral", "displayName": "Void Navy", "canonical": "#0b1017", "tonalRamp": ["#05080c", "#0b1017", "#121a26", "#19243a", "#22303f", "#3a4b5c", "#7d91a3", "#d3e0ec"] },
+      "surface-panel": { "role": "neutral", "displayName": "Panel Slate", "canonical": "#121a26", "tonalRamp": ["#070b11", "#0b1017", "#121a26", "#1a2638", "#22344a", "#34506e", "#5f7f9f", "#a9bfd3"] },
+      "line-hairline": { "role": "neutral", "displayName": "Hairline Steel", "canonical": "#22303f", "tonalRamp": ["#0e141b", "#161f29", "#22303f", "#314357", "#43596f", "#5f768c", "#8498ab", "#b5c3d0"] },
+      "text-muted": { "role": "neutral", "displayName": "Mist Muted", "canonical": "#7d91a3", "tonalRamp": ["#2a343e", "#3d4b58", "#566879", "#7d91a3", "#9aabba", "#b5c2ce", "#cfd8e0", "#e7ecf0"] },
+      "text-heading": { "role": "neutral", "displayName": "Ice Heading", "canonical": "#eef6ff", "tonalRamp": ["#3a4a5c", "#566b82", "#7d95ad", "#a3b8cc", "#c5d5e4", "#dce8f3", "#eef6ff", "#f8fbff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero and intro name only; last word glows in accent." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Company names and level-card titles." },
+      "body": { "displayName": "Body", "purpose": "Reading copy." },
+      "label": { "displayName": "Label", "purpose": "Kickers, periods, level numbers, hints." }
+    },
+    "shadows": [
+      { "name": "accent-ring-bloom", "value": "0 0 0 1px color-mix(in oklab, var(--accent) 50%, transparent), 0 0 24px color-mix(in oklab, var(--accent) 25%, transparent)", "purpose": "Hover and focus on level cards, and the logo mark." },
+      { "name": "text-glow", "value": "0 0 28px color-mix(in oklab, var(--accent) 55%, transparent)", "purpose": "Highlighted last word of the name." }
+    ],
+    "motion": [
+      { "name": "ease-rise", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Staggered entrance (0.6s) for hero and intro elements." },
+      { "name": "lift", "value": "translateY(-2px) on buttons, translateY(-4px) on level cards", "purpose": "Hover and focus feedback." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px (sidebar nav appears)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call to action: accent fill, lifts on hover.",
+      "html": "<button class=\"ds-btn-primary\">View projects</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #00e5ff; color: #0b1017; padding: 10px 20px; border: 0; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 0.2s; } .ds-btn-primary:hover { transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 2px solid #eef6ff; outline-offset: 4px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions such as CV downloads and contact.",
+      "html": "<button class=\"ds-btn-ghost\">Contact</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #eef6ff; padding: 10px 20px; border: 1px solid #22303f; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 0.2s, border-color 0.2s, color 0.2s; } .ds-btn-ghost:hover, .ds-btn-ghost:focus-visible { transform: translateY(-2px); border-color: #00e5ff; color: #00e5ff; outline: none; }"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Technology tag with a brand glyph; accent on hover.",
+      "html": "<span class=\"ds-chip\">Unity</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid #22303f; border-radius: 9999px; background: #19243433; color: #7d91a3; font-size: 14px; transition: color 0.2s, border-color 0.2s; } .ds-chip:hover { color: #00e5ff; border-color: #00e5ff; }"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat surface with a hairline border and an optional 3px accent bar.",
+      "html": "<article class=\"ds-panel\"><h3>Senior Software Engineer</h3><p>Flat at rest, hairline border.</p></article>",
+      "css": ".ds-panel { position: relative; overflow: hidden; background: #121a26; color: #d3e0ec; border: 1px solid #22303f; border-radius: 10px; padding: 24px; } .ds-panel::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: #00e5ff; } .ds-panel h3 { margin: 0 0 8px; color: #eef6ff; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.025em; } .ds-panel p { margin: 0; font-size: 14px; }"
+    },
+    {
+      "name": "Level Card",
+      "kind": "custom",
+      "refersTo": "panel",
+      "description": "Intro level-select tile: icon, level number, title, blurb; lifts and glows on hover or focus.",
+      "html": "<button class=\"ds-level\"><span class=\"ds-level-top\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#00e5ff\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21a8 8 0 0 1 16 0\"/></svg><span class=\"ds-level-num\">LVL 01</span></span><span class=\"ds-level-title\">About</span><span class=\"ds-level-blurb\">Who I am.</span></button>",
+      "css": ".ds-level { display: block; width: 220px; text-align: left; background: #121a26; border: 1px solid #22303f; border-radius: 10px; padding: 16px; cursor: pointer; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; } .ds-level:hover, .ds-level:focus-visible { transform: translateY(-4px); border-color: #00e5ff; outline: none; box-shadow: 0 0 0 1px rgba(0,229,255,0.5), 0 0 24px rgba(0,229,255,0.25); } .ds-level-top { display: flex; justify-content: space-between; align-items: center; } .ds-level-num { font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7d91a3; } .ds-level-title { display: block; margin-top: 12px; font-family: Orbitron, sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.025em; color: #eef6ff; } .ds-level-blurb { display: block; margin-top: 4px; font-size: 14px; color: #7d91a3; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cockpit Dashboard",
+    "overview": "The portfolio reads like an instrument panel: a near-black field with a faint HUD grid, hairline-bordered panels, and a single neon accent that lights up only what matters. Sections are \"levels\", the sidebar is a status rail, and the About aside is a player card. The game framing is a navigation and scanning device, so a recruiter can find the CV, the proof and the contact in seconds.",
+    "keyCharacteristics": [
+      "Dark-first HUD: tonal surfaces, hairline borders, a faint 48px grid and an accent bloom at the top edge",
+      "One accent at a time; the accent pair is user-swappable through six presets",
+      "Orbitron for naming, Barlow for reading, Share Tech Mono for readouts",
+      "Game vocabulary (levels, player card, press start) as wayfinding"
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Cyan is the only action color on a screen. Lime marks status and reward, never a call to action.", "section": "colors" },
+      { "name": "The Variable Accent Rule", "body": "Always var(--accent) / var(--accent-2); any hex that matches a preset in a component is a bug, because it breaks theme switching.", "section": "colors" },
+      { "name": "The Readout Rule", "body": "Monospace is for labels, periods and levels. Never use it for paragraphs.", "section": "typography" },
+      { "name": "The Wide Voice Rule", "body": "Orbitron is uppercase and display-only; do not set body copy or long strings in it.", "section": "typography" },
+      { "name": "The Flat-Until-Touched Rule", "body": "Panels sit flat at rest. Glow appears on hover, focus or the logo; it is never added to resting content.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use var(--accent) and var(--accent-2) so every theme preset works.",
+      "Do keep the game vocabulary (levels, player card, press start) as navigation, with the real content always one click or scroll away.",
+      "Do keep monospace labels uppercase with wide tracking, and Orbitron uppercase with wide tracking.",
+      "Do separate sections with a hairline border and 80px padding rather than boxes or shadows.",
+      "Do respect prefers-reduced-motion and the in-site motion toggle; entrances use the exponential ease-out cubic-bezier(0.16, 1, 0.3, 1)."
+    ],
+    "donts": [
+      "Don't build a generic SaaS landing template: no gradient heroes, icon-card feature grids or stock testimonials.",
+      "Don't over-gamify: no XP bars, fake loot or decorative mechanics that slow a recruiter down.",
+      "Don't go 8-bit, pixel-art or skeuomorphic; the HUD stays clean and modern.",
+      "Don't drift to a cold corporate résumé look: keep the accent, the grid and the wide display type.",
+      "Don't put glow on resting content, use gradient text, or hard-code a preset's hex value in a component."
+    ]
+  }
+}

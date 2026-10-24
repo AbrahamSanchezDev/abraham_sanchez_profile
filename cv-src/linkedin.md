@@ -12,9 +12,9 @@ Senior Software Engineer | C# · Unity · TypeScript | Client Systems, Tooling &
 
 ## Top skills (pin these 5)
 
-C# · Unity · Software Architecture · TypeScript · Performance Optimization
+C# · Unity · Software Architecture · TypeScript · Game Development
 
-> Replaces "Technical Documentation / Architecture / Meta Quest". Recruiter searches filter on these.
+> Replaces "Technical Documentation / Architecture / Meta Quest". Recruiter searches filter on these. "Performance Optimization" isn't a standard LinkedIn skill, so Game Development is pinned instead.
 
 ## About (≈1,900 chars; the first 3 lines show before "see more")
 
@@ -35,10 +35,17 @@ Portfolio with playable demos: abrahamsanchezdev.github.io/abraham_sanchez_profi
 
 ## Featured (add these)
 
+Order matters: the first 2–3 cards are visible without scrolling, and the two Steam games back the "2 Steam releases" claim in the headline. The Card Framework is intentionally left out.
+
 1. Portfolio: https://abrahamsanchezdev.github.io/abraham_sanchez_profile/en
+   - Title: Abraham Sanchez – Portfolio
+   - Description: Playable demos, case studies and CV downloads. C#, Unity, XR and tooling.
 2. The Capture Worlds on Steam: https://store.steampowered.com/app/826930/The_Capture_Worlds/
-3. Multi-Mode Card Framework (live WebGL demo + repo): your strongest public code
-4. Landless on Steam: https://store.steampowered.com/app/617030/Landless/
+   - Title: The Capture Worlds (Steam)
+   - Description: Procedural open-world RPG I built and self-published. 80%+ positive reviews, Workshop modding.
+3. Landless on Steam: https://store.steampowered.com/app/617030/Landless/
+   - Title: Landless (Steam)
+   - Description: Open-world survival game where I was lead programmer. Procedural world, crafting and survival systems.
 
 > Move "Publications → Worlds" to Projects/Featured; a game isn't a publication.
 
